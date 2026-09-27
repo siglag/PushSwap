@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 02:09:29 by mohammah         ###   ########.fr       */
+/*   Created: 2026/09/28 02:00:53 by mohammah          #+#    #+#             */
+/*   Updated: 2026/09/28 02:08:44 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(char *str)
 {
-	printf("hi");
-	return (0);
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
