@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 12:48:14 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/28 16:20:55 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ typedef struct t_parsed
 size_t					ft_strlen(char *str);
 t_parsed				*parser(int argc, char **argv);
 int						free_parsed(t_parsed *parsed);
+int						ft_isdigit(char *character);
+int						ft_strncmp(char *s1, char *s2, size_t n);
+int						validate_format(int argc, char **argv);
 
 #endif
