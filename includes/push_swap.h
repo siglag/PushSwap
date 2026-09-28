@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 12:48:14 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/28 16:09:03 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct t_parsed
 }						t_parsed;
 
 size_t					ft_strlen(char *str);
+char					**ft_split(char const *s, char c);
+int						ft_atoi(const char *str);
 t_parsed				*parser(int argc, char **argv);
 int						free_parsed(t_parsed *parsed);
 

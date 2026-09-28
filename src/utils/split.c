@@ -6,9 +6,10 @@
 /*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 15:22:41 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/28 15:23:17 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/09/28 16:10:07 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
 static size_t	count_words(char const *s, char c)
 {

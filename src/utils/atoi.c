@@ -6,9 +6,11 @@
 /*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 15:21:58 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/28 15:22:18 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/09/28 16:10:23 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
+
 int	ft_atoi(const char *str)
 {
 	int	i;
