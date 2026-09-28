@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 11:25:14 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/09/28 12:48:14 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdbool.h> //for bool
 # include <stdlib.h>
 # include <unistd.h>
+
 /*
 	First of all, here we'll have all the:
 	- functions prototypes
@@ -26,15 +27,16 @@
 
 enum					e_strategies
 {
-	ADAPTIVE = 1,
-	NORMAL = 2,
-	MEDIUM = 3,
-	COMPLIX = 4
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLIX
 };
 
 typedef struct t_parsed
 {
 	int					*sequence;
+	size_t				sequence_size;
 	bool				is_bench;
 	enum e_strategies	strategy;
 }						t_parsed;
