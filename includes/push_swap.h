@@ -6,15 +6,16 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 02:11:09 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/28 11:25:14 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdbool.h> //for bool
 # include <stdlib.h>
-
+# include <unistd.h>
 /*
 	First of all, here we'll have all the:
 	- functions prototypes
@@ -23,7 +24,7 @@
 	- etc...
 */
 
-enum e_strategies
+enum					e_strategies
 {
 	ADAPTIVE = 1,
 	NORMAL = 2,
@@ -36,10 +37,10 @@ typedef struct t_parsed
 	int					*sequence;
 	bool				is_bench;
 	enum e_strategies	strategy;
-}	t_parsed;
+}						t_parsed;
 
-size_t		ft_strlen(char *str);
-t_parsed	*parser(int argc, char **argv);
-int			free_parsed(t_parsed *parsed);
+size_t					ft_strlen(char *str);
+t_parsed				*parser(int argc, char **argv);
+int						free_parsed(t_parsed *parsed);
 
 #endif
