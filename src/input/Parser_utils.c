@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:03:13 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 11:18:41 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:47:56 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,31 @@ int	extract_strategy(char *strategy)
 /*
 	extract the flags out of the args
 */
-void	extract_flags(t_parsed *parsed, int argc, char **args)
+int	extract_flags(t_parsed *parsed, int argc, char **args)
 {
 	int	arg;
+	int	flags_found;
+	int	has_startegy;
 
 	arg = 0;
+	flags_found = 0;
+	has_startegy = 0;
 	while (arg < argc)
 	{
 		if (ft_strncmp(args[arg], "--", 2) == 0)
 		{
 			if (extract_strategy(args[arg]))
+			{
 				parsed->strategy = extract_strategy(args[arg]);
+				if (has_startegy)
+					return (-1);
+				has_startegy = 1;
+			}
 			else
 				parsed->is_bench = true;
+			flags_found++;
 		}
 		arg++;
 	}
+	return (flags_found);
 }
