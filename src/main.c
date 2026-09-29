@@ -6,36 +6,49 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 17:39:43 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 19:00:36 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+static void	print_parsed(t_parsed *parsed)
 {
-	t_parsed	*parsed;
-	size_t		index;
+	size_t	index;
 
-	printf("[main]Main function called with %d arguments\n", argc);
-	printf("[main]Testing count_numbers function: %d\n", count_numbers(argv[1]));
-	parsed = parser(argc, argv);
-	if (!parsed)
-	{
-		fprintf(stderr, "Error: Failed to parse input\n");
-		return (1);
-	}
-	printf("[main]Parsing successful: %s\n", parsed ? "true" : "false");
-	printf("[main]Parsed strategy: %d\n", parsed->strategy);
-	printf("[main]Parsed is_bench: %d\n", parsed->is_bench);
-	printf("[main]Parsed sequence size: %zu\n", parsed->sequence_size);
+	printf("  strategy:      %d\n", parsed->strategy);
+	printf("  is_bench:      %d\n", parsed->is_bench);
+	printf("  sequence_size: %zu\n", parsed->sequence_size);
+	printf("  sequence:      ");
+
 	index = 0;
 	while (index < parsed->sequence_size)
 	{
-		printf("[main][%zu] Parsed sequence: %d\n", index, parsed->sequence[index]);
+		printf("%d", parsed->sequence[index]);
+		if (index + 1 < parsed->sequence_size)
+			printf(", ");
 		index++;
 	}
+	printf("\n");
+}
+
+int	main(int argc, char **argv)
+{
+	t_parsed	*parsed;
+
+	printf("=== push_swap parser test ===\n");
+	printf("argc: %d\n", argc);
+
+	parsed = parser(argc, argv);
+	if (!parsed)
+	{
+		printf("RESULT: REJECTED\n");
+		return (1);
+	}
+
+	printf("RESULT: ACCEPTED\n");
+	print_parsed(parsed);
 	free_parsed(parsed);
 	return (0);
 }
