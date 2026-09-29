@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 09:29:29 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:17:53 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 
 enum					e_strategies
 {
-	ADAPTIVE,
-	SIMPLE,
-	MEDIUM,
-	COMPLIX
+	ADAPTIVE = 1,
+	SIMPLE = 2,
+	MEDIUM = 3,
+	COMPLIX = 4
 };
 
 typedef struct t_parsed
@@ -51,5 +51,7 @@ char					ft_tolower(char character);
 int						ft_strcasecmp(char *s1, char *s2);
 int						validate_ordering(int argc, char **argv);
 int						validate_flag(char *flag);
+void					extract_flags(t_parsed *parsed, int argc, char **args);
+int						extract_strategy(char *strategy);
 
 #endif
