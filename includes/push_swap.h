@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 16:30:59 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/09/29 17:13:58 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,18 @@ enum					e_strategies
 	ADAPTIVE,
 	SIMPLE,
 	MEDIUM,
-	COMPLIX
+	COMPLEX
 };
 
-typedef struct t_parsed
+typedef struct s_stack
+{
+	int					*a;
+	int					*b;
+	int					size_a;
+	int					size_b;
+}						t_stack;
+
+typedef struct s_parsed
 {
 	int					*sequence;
 	size_t				sequence_size;
@@ -48,5 +56,17 @@ char					*ft_strjoin(char const *s1, char const *s2);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 t_parsed				*parser(int argc, char **argv);
 int						free_parsed(t_parsed *parsed);
-
+t_stack					*init_stack(t_parsed *parsed);
+//  OPERATIONS
+void					sa(t_stack *stack);
+void					sb(t_stack *stack);
+void					ss(t_stack *stack);
+void					pa(t_stack *stack);
+void					pb(t_stack *stack);
+void					ra(t_stack *stack);
+void					rb(t_stack *stack);
+void					rr(t_stack *stack);
+void					rra(t_stack *stack);
+void					rrb(t_stack *stack);
+void					rrr(t_stack *stack);
 #endif
