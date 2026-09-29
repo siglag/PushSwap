@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:00:53 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/28 15:30:10 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 08:48:47 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,25 @@ int	ft_isdigit(char *character)
 		index++;
 	}
 	return (1);
+}
+
+int	ft_strcasecmp(char *s1, char *s2)
+{
+	size_t	index;
+
+	index = 0;
+	while (s1[index] && s2[index])
+	{
+		if (ft_tolower(s1[index]) != ft_tolower(s2[index]))
+			return (s1[index] - s2[index]);
+		index++;
+	}
+	return (s1[index] - s2[index]);
+}
+
+char	ft_tolower(char character)
+{
+	if (character >= 'A' && character <= 'Z')
+		return (character + 32);
+	return (character);
 }
