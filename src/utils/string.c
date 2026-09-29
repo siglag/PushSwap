@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:00:53 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 08:48:47 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 09:13:51 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_strcasecmp(char *s1, char *s2)
 	size_t	index;
 
 	index = 0;
+	if (ft_strlen(s1) != ft_strlen(s2))
+		return (1);
 	while (s1[index] && s2[index])
 	{
 		if (ft_tolower(s1[index]) != ft_tolower(s2[index]))
