@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parser.c                                           :+:      :+:    :+:   */
+/*   substr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/28 00:11:17 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 14:05:20 by mohammah         ###   ########.fr       */
+/*   Created: 2026/09/29 17:18:18 by mohammah          #+#    #+#             */
+/*   Updated: 2026/09/29 17:18:25 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_parsed	*parser(int argc, char **argv)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_parsed	*parsed;
-	int			flags;
+	char	*sub;
+	size_t	index;
 
-	parsed = malloc(sizeof(t_parsed));
-	parsed->strategy = 0;
-	flags = extract_flags(parsed, argc, argv);
-	if (flags < 0 || flags > 2)
-		return (free_parsed(parsed), NULL);
-	if (!extract_sequence(parsed, argc, argv))
-		return (free_parsed(parsed), NULL);
-	return (parsed);
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		len = 0;
+	else if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	sub = malloc(sizeof(char) * (len + 1));
+	if (!sub)
+		return (NULL);
+	index = 0;
+	while (index < len)
+	{
+		sub[index] = s[start + index];
+		index++;
+	}
+	sub[index] = '\0';
+	return (sub);
 }

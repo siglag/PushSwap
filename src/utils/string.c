@@ -6,13 +6,13 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:00:53 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 09:13:51 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 18:49:25 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	length;
 
@@ -43,7 +43,10 @@ int	ft_isdigit(char *character)
 	index = 0;
 	while (character[index])
 	{
-		if (character[index] < '0' || character[index] > '9')
+		if ((character[index] < '0' || character[index] > '9')
+			&& character[index] != ' '
+			&& character[index] != '-'
+			&& character[index] != '+')
 			return (0);
 		index++;
 	}

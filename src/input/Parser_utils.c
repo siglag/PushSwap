@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:03:13 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 11:47:56 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 18:56:27 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,57 @@ int	free_parsed(t_parsed *parsed)
 	if (parsed)
 		free(parsed);
 	return (0);
+}
+
+int	extract_numbers(int *sequence, int argc, char **argv)
+{
+	int		arg;
+	int		index;
+	char	**numbers;
+	int		token;
+
+	arg = 1;
+	index = 0;
+	while (arg < argc)
+	{
+		if (ft_strncmp(argv[arg], "--", 2))
+		{
+			numbers = ft_split(argv[arg], ' ');
+			if (!numbers)
+				return (0);
+			token = 0;
+			while (numbers[token])
+			{
+				sequence[index++] = ft_atoi(numbers[token]);
+				token++;
+			}
+			free_words(numbers, token);
+		}
+		arg++;
+	}
+	return (1);
+}
+
+int	extract_sequence(t_parsed *parsed, int argc, char **argv)
+{
+	int	arg;
+	int	length;
+
+	arg = 1;
+	length = 0;
+	while (arg < argc)
+	{
+		if (ft_isdigit(argv[arg]))
+			length += count_numbers(argv[arg]);
+		arg++;
+	}
+	parsed->sequence_size = length;
+	parsed->sequence = malloc(sizeof(int) * (length + 1));
+	if (!parsed->sequence)
+		return (0);
+	if (!extract_numbers(parsed->sequence, argc, argv))
+		return (0);
+	return (1);
 }
 
 int	extract_strategy(char *strategy)

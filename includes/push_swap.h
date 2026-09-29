@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 11:31:42 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/29 17:36:34 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct t_parsed
 	enum e_strategies	strategy;
 }						t_parsed;
 
-size_t					ft_strlen(char *str);
+size_t					ft_strlen(const char *str);
 t_parsed				*parser(int argc, char **argv);
 int						free_parsed(t_parsed *parsed);
 int						ft_isdigit(char *character);
@@ -53,5 +53,13 @@ int						validate_ordering(int argc, char **argv);
 int						validate_flag(char *flag);
 int						extract_flags(t_parsed *parsed, int argc, char **args);
 int						extract_strategy(char *strategy);
+int						ft_atoi(char *str);
+int						extract_sequence(t_parsed *parsed,
+							int argc, char **args);
+int						count_numbers(char *str);
+int						extract_number(int *sequence, int argc, char **argv);
+char					**ft_split(char const *str, char c);
+char					*ft_substr(char const *s, unsigned int start, size_t len);
+void					free_words(char **result, int count);
 
 #endif
