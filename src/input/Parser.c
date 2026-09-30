@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:11:17 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/30 09:35:53 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/30 10:25:49 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ t_parsed	*parser(int argc, char **argv)
 	if (argc < 2)
 		return (NULL);
 	parsed = malloc(sizeof(t_parsed));
-	parsed->strategy = 0;
+	if (!parsed)
+		return (NULL);
+	parsed->strategy = 1;
 	flags = extract_flags(parsed, argc, argv);
 	if (flags < 0 || flags > 2)
 		return (free_parsed(parsed), NULL);
