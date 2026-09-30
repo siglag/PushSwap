@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:49:07 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 18:54:31 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/30 08:45:00 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_atoi(char *str)
 {
 	int	result;
-	int		sign;
+	int	sign;
 
 	result = 0;
 	sign = 1;

@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:11:17 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 19:01:59 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/30 09:35:53 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_parsed	*parser(int argc, char **argv)
 	if (flags < 0 || flags > 2)
 		return (free_parsed(parsed), NULL);
 	if (!extract_sequence(parsed, argc, argv))
+		return (free_parsed(parsed), NULL);
+	if (parsed->sequence_size == 0)
 		return (free_parsed(parsed), NULL);
 	return (parsed);
 }

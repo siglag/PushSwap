@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 19:00:36 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/30 08:44:37 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	print_parsed(t_parsed *parsed)
 	printf("  is_bench:      %d\n", parsed->is_bench);
 	printf("  sequence_size: %zu\n", parsed->sequence_size);
 	printf("  sequence:      ");
-
 	index = 0;
 	while (index < parsed->sequence_size)
 	{
@@ -39,14 +38,12 @@ int	main(int argc, char **argv)
 
 	printf("=== push_swap parser test ===\n");
 	printf("argc: %d\n", argc);
-
 	parsed = parser(argc, argv);
 	if (!parsed)
 	{
 		printf("RESULT: REJECTED\n");
 		return (1);
 	}
-
 	printf("RESULT: ACCEPTED\n");
 	print_parsed(parsed);
 	free_parsed(parsed);

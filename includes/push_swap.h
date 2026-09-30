@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 17:36:34 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/09/30 08:45:39 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ enum					e_strategies
 	ADAPTIVE = 1,
 	SIMPLE = 2,
 	MEDIUM = 3,
-	COMPLIX = 4
+	COMPLEX = 4
 };
 
 typedef struct t_parsed
@@ -59,7 +59,8 @@ int						extract_sequence(t_parsed *parsed,
 int						count_numbers(char *str);
 int						extract_number(int *sequence, int argc, char **argv);
 char					**ft_split(char const *str, char c);
-char					*ft_substr(char const *s, unsigned int start, size_t len);
+char					*ft_substr(char const *s,
+							unsigned int start, size_t len);
 void					free_words(char **result, int count);
 
 #endif
