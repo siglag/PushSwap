@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:00:53 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 18:49:25 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 00:12:00 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	size_t	index;
 
 	index = 0;
-	while (s1[index] && s2[index] && index < n)
+	while (index < n && (s1[index] || s2[index]))
 	{
 		if (s1[index] != s2[index])
-			return (s1[index] - s2[index]);
+			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
 		index++;
 	}
 	return (0);

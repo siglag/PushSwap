@@ -6,18 +6,18 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:49:07 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/30 08:45:00 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 00:18:40 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, int *result)
 {
-	int	result;
-	int	sign;
+	long	number;
+	int		sign;
 
-	result = 0;
+	number = 0;
 	sign = 1;
 	if (*str == '-' || *str == '+')
 	{
@@ -27,10 +27,15 @@ int	ft_atoi(char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		result = result * 10 + (*str - '0');
+		number = number * 10 + (*str - '0');
+		if (sign == 1 && number > 2147483647)
+			return (0);
+		if (sign == -1 && number > 2147483648)
+			return (0);
 		str++;
 	}
-	return (result * sign);
+	*result = (int)(number * sign);
+	return (1);
 }
 
 /*

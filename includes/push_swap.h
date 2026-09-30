@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/30 08:45:39 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 00:41:57 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ int						validate_ordering(int argc, char **argv);
 int						validate_flag(char *flag);
 int						extract_flags(t_parsed *parsed, int argc, char **args);
 int						extract_strategy(char *strategy);
-int						ft_atoi(char *str);
+int						ft_atoi(char *str, int *result);
 int						extract_sequence(t_parsed *parsed,
 							int argc, char **args);
 int						count_numbers(char *str);
-int						extract_number(int *sequence, int argc, char **argv);
+int						extract_numbers(int *sequence, int argc, char **argv);
 char					**ft_split(char const *str, char c);
 char					*ft_substr(char const *s,
 							unsigned int start, size_t len);
 void					free_words(char **result, int count);
+int						extract_token(int *sequence,
+							char **numbers, int *index);
 
 #endif

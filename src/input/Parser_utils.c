@@ -6,21 +6,25 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:03:13 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/30 09:36:04 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 00:45:56 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	free_parsed(t_parsed *parsed)
+int	extract_token(int *sequence, char **numbers, int *index)
 {
-	if (!parsed)
-		return (1);
-	if (parsed->sequence)
-		free(parsed->sequence);
-	if (parsed)
-		free(parsed);
-	return (0);
+	int	token;
+
+	token = 0;
+	while (numbers[token])
+	{
+		if (!ft_atoi(numbers[token], &sequence[*index]))
+			return (-1);
+		(*index)++;
+		token++;
+	}
+	return (token);
 }
 
 int	extract_numbers(int *sequence, int argc, char **argv)
@@ -34,16 +38,16 @@ int	extract_numbers(int *sequence, int argc, char **argv)
 	index = 0;
 	while (arg < argc)
 	{
-		if (ft_strncmp(argv[arg], "--", 2))
+		if (ft_strncmp(argv[arg], "--", 2) != 0)
 		{
 			numbers = ft_split(argv[arg], ' ');
 			if (!numbers)
 				return (0);
-			token = 0;
-			while (numbers[token])
+			token = extract_token(sequence, numbers, &index);
+			if (token < 0)
 			{
-				sequence[index++] = ft_atoi(numbers[token]);
-				token++;
+				free_words(numbers, 0);
+				return (0);
 			}
 			free_words(numbers, token);
 		}
@@ -66,7 +70,7 @@ int	extract_sequence(t_parsed *parsed, int argc, char **argv)
 		arg++;
 	}
 	parsed->sequence_size = length;
-	parsed->sequence = malloc(sizeof(int) * (length + 1));
+	parsed->sequence = malloc(sizeof(int) * length);
 	if (!parsed->sequence)
 		return (0);
 	if (!extract_numbers(parsed->sequence, argc, argv))
@@ -103,9 +107,9 @@ int	extract_flags(t_parsed *parsed, int argc, char **args)
 	{
 		if (ft_strncmp(args[arg], "--", 2) == 0)
 		{
-			if (extract_strategy(args[arg]))
+			parsed->strategy = extract_strategy(args[arg]);
+			if (parsed->strategy)
 			{
-				parsed->strategy = extract_strategy(args[arg]);
 				if (has_startegy)
 					return (-1);
 				has_startegy = 1;
