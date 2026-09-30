@@ -3,93 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/28 15:22:41 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/28 16:10:07 by sbanimou         ###   ########.fr       */
+/*   Created: 2026/09/29 17:17:41 by mohammah          #+#    #+#             */
+/*   Updated: 2026/09/29 17:26:43 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-static size_t	count_words(char const *s, char c)
+static int	count_words(const char *str, char c)
 {
-	size_t	count;
-	int		in_word;
+	int	index;
+	int	count;
+	int	is_word;
 
+	index = 0;
 	count = 0;
-	in_word = 0;
-	while (*s)
+	is_word = 0;
+	while (str[index])
 	{
-		if (*s != c && !in_word)
+		if (str[index] == c)
+			is_word = 0;
+		else if (!is_word)
 		{
-			in_word = 1;
+			is_word = 1;
 			count++;
 		}
-		else if (*s == c)
-			in_word = 0;
-		s++;
+		index++;
 	}
 	return (count);
 }
 
-static char	*allocate_word(char const *s, char c)
+static int	get_word_length(const char *str, int start, char c)
 {
-	size_t	len;
-	size_t	i;
-	char	*word;
+	int	length;
 
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	word = (char *)malloc(sizeof(char) * (len + 1));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
+	length = 0;
+	while (str[start + length] && str[start + length] != c)
+		length++;
+	return (length);
 }
 
-static char	**free_array(char **arr, size_t i)
+void	free_words(char **result, int count)
 {
-	while (i > 0)
+	while (count > 0)
 	{
-		i--;
-		free(arr[i]);
+		count--;
+		free(result[count]);
 	}
-	free(arr);
-	return (NULL);
+	free(result);
 }
 
-char	**ft_split(char const *s, char c)
+static int	fill_result(char **result, const char *str, char c)
+{
+	int	index;
+	int	word;
+	int	length;
+
+	index = 0;
+	word = 0;
+	while (str[index])
+	{
+		while (str[index] && str[index] == c)
+			index++;
+		if (!str[index])
+			break ;
+		length = get_word_length(str, index, c);
+		result[word] = ft_substr(str, index, length);
+		if (!result[word])
+			return (0);
+		word++;
+		index += length;
+	}
+	result[word] = NULL;
+	return (1);
+}
+
+char	**ft_split(char const *str, char c)
 {
 	char	**result;
-	size_t	i;
+	int		words;
 
-	if (!s)
+	if (!str)
 		return (NULL);
-	result = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	words = count_words(str, c);
+	result = malloc(sizeof(char *) * (words + 1));
 	if (!result)
 		return (NULL);
-	i = 0;
-	while (*s)
+	if (!fill_result(result, str, c))
 	{
-		if (*s != c)
-		{
-			result[i] = allocate_word(s, c);
-			if (!result[i])
-				return (free_array(result, i));
-			i++;
-			while (*s && *s != c)
-				s++;
-		}
-		else
-			s++;
+		free_words(result, words);
+		return (NULL);
 	}
-	result[i] = NULL;
 	return (result);
 }
