@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 15:47:10 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 16:41:25 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_operations
 	int	rrr;
 }						t_operations;
 
+// config
 typedef struct s_parsed
 {
 	int					*sequence;
@@ -106,5 +107,9 @@ char					*ft_substr(char const *s,
 void					free_words(char **result, int count);
 int						extract_token(int *sequence,
 							char **numbers, int *index);
+int						disorder(t_parsed *parsed);
+int						complex_strategy(t_stack *stack);
+int						medium_strategy(t_stack *stack);
+int						simple_strategy(t_stack *stack);
 
 #endif
