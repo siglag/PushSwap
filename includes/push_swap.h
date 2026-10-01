@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 15:33:08 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:47:10 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,21 @@ typedef struct s_stack
 	int					size_b;
 }						t_stack;
 
+typedef struct s_operations
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}						t_operations;
+
 typedef struct s_parsed
 {
 	int					*sequence;
@@ -51,20 +66,7 @@ typedef struct s_parsed
 	double				disorder;
 }						t_parsed;
 
-typedef struct s_operations
-{
-	sa;
-	sb;
-	ss;
-	pa;
-	pb;
-	ra;
-	rb;
-	rr;
-	rra;
-	rrb;
-	rrr;
-}						t_operations;
+
 
 t_stack					*init_stack(t_parsed *parsed);
 //  OPERATIONS
