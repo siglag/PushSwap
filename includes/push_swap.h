@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 01:42:17 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:47:10 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,54 @@ enum					e_strategies
 	COMPLEX = 4
 };
 
-typedef struct t_parsed
+typedef struct s_stack
+{
+	int					*a;
+	int					*b;
+	int					size_a;
+	int					size_b;
+}						t_stack;
+
+typedef struct s_operations
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}						t_operations;
+
+typedef struct s_parsed
 {
 	int					*sequence;
 	size_t				sequence_size;
 	bool				is_bench;
 	enum e_strategies	strategy;
+	t_operations		*operations;
+	double				disorder;
 }						t_parsed;
+
+
+
+t_stack					*init_stack(t_parsed *parsed);
+//  OPERATIONS
+void					sa(t_stack *stack);
+void					sb(t_stack *stack);
+void					ss(t_stack *stack);
+void					pa(t_stack *stack);
+void					pb(t_stack *stack);
+void					ra(t_stack *stack);
+void					rb(t_stack *stack);
+void					rr(t_stack *stack);
+void					rra(t_stack *stack);
+void					rrb(t_stack *stack);
+void					rrr(t_stack *stack);
 
 size_t					ft_strlen(const char *str);
 char					**ft_split(char const *s, char c);
