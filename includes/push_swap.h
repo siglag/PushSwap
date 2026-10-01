@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/29 17:13:58 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:33:08 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,24 @@ typedef struct s_parsed
 	size_t				sequence_size;
 	bool				is_bench;
 	enum e_strategies	strategy;
+	t_operations		*operations;
+	double				disorder;
 }						t_parsed;
+
+typedef struct s_operations
+{
+	sa;
+	sb;
+	ss;
+	pa;
+	pb;
+	ra;
+	rb;
+	rr;
+	rra;
+	rrb;
+	rrr;
+}						t_operations;
 
 size_t					ft_strlen(char *str);
 char					**ft_split(char const *s, char c);
