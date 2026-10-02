@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 16:41:25 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 13:55:09 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ typedef struct s_parsed
 	t_operations		*operations;
 	double				disorder;
 }						t_parsed;
-
-
 
 t_stack					*init_stack(t_parsed *parsed);
 //  OPERATIONS

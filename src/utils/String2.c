@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:49:07 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 00:18:40 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 13:57:34 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,28 @@ int	count_numbers(char *str)
 		index++;
 	}
 	return (count);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	index;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		len = 0;
+	else if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	sub = malloc(sizeof(char) * (len + 1));
+	if (!sub)
+		return (NULL);
+	index = 0;
+	while (index < len)
+	{
+		sub[index] = s[start + index];
+		index++;
+	}
+	sub[index] = '\0';
+	return (sub);
 }
