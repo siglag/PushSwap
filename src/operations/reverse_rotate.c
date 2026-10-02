@@ -12,7 +12,7 @@
 #include "push_swap.h"
 
 // The last element becomes the first in stack a
-void	rra(t_stack *stack)
+void	rra(t_stack *stack) 
 {
 	int	last;
 	int	i;
@@ -50,7 +50,7 @@ void	rrb(t_stack *stack)
 // rra and rrb at the same time
 void	rrr(t_stack *stack)
 {
-	if (!stack)
+	if (!stack || (stack->size_a < 2 && stack->size_b < 2)) 
 		return ;
 	rra(stack);
 	rrb(stack);
