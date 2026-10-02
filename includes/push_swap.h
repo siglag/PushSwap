@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 15:47:10 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 15:58:42 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdbool.h> //for bool
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h> // temp
 
 /*
 	First of all, here we'll have all the:
@@ -56,17 +57,16 @@ typedef struct s_operations
 	int	rrr;
 }						t_operations;
 
+// config
 typedef struct s_parsed
 {
 	int					*sequence;
 	size_t				sequence_size;
 	bool				is_bench;
 	enum e_strategies	strategy;
-	t_operations		*operations;
+	t_operations		operations;
 	double				disorder;
 }						t_parsed;
-
-
 
 t_stack					*init_stack(t_parsed *parsed);
 //  OPERATIONS
@@ -106,5 +106,10 @@ char					*ft_substr(char const *s,
 void					free_words(char **result, int count);
 int						extract_token(int *sequence,
 							char **numbers, int *index);
+int						disorder(t_parsed *parsed);
+int						complex_strategy(t_stack *stack);
+int						medium_strategy(t_stack *stack);
+int						simple_strategy(t_stack *stack);
+int						strategies_router(t_parsed *parsed);
 
 #endif
