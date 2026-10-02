@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:11:17 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 14:53:36 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 00:12:28 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	init_parsed(t_parsed **parsed)
 	(*parsed)->sequence_size = 0;
 	(*parsed)->is_bench = false;
 	(*parsed)->strategy = ADAPTIVE;
+	(*parsed)->adaptive = false;
 	(*parsed)->disorder = -1;
 	(*parsed)->operations = (t_operations){0};
 	return (1);
@@ -47,6 +48,8 @@ t_parsed	*parser(int argc, char **argv)
 	flags = extract_flags(parsed, argc, argv);
 	if (flags < 0 || flags > 2)
 		return (free_parsed(parsed), NULL);
+	if (parsed->strategy == ADAPTIVE)
+		parsed->adaptive = true;
 	if (!extract_sequence(parsed, argc, argv))
 		return (free_parsed(parsed), NULL);
 	if (parsed->sequence_size == 0)

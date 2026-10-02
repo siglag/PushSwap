@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 11:19:52 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/02 21:31:00 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 00:14:00 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,16 @@ t_stack	*init_stack(t_parsed *parsed)
 	stack->size_b = 0;
 	stack->parsed = parsed;
 	return (stack);
+}
+
+int	free_stack(t_stack *stack)
+{
+	if (!stack)
+		return (0);
+	if (stack->a)
+		free(stack->a);
+	if (stack->b)
+		free(stack->b);
+	free(stack);
+	return (1);
 }

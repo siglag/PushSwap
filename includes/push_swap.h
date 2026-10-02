@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 22:07:27 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 00:14:14 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_operations
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	total;
 }						t_operations;
 
 // config
@@ -56,6 +57,7 @@ typedef struct s_parsed
 	size_t				sequence_size;
 	bool				is_bench;
 	enum e_strategies	strategy;
+	bool				adaptive;
 	t_operations		operations;
 	double				disorder;
 }						t_parsed;
@@ -113,5 +115,8 @@ int						simple_strategy(t_stack *stack);
 int						strategies_router(t_parsed *parsed);
 int						calculate_disorder(t_parsed *parsed);
 int						bench(t_parsed *parsed);
+char					*strategy_name(t_parsed *parsed);
+char					*bench_strategy(t_parsed *parsed);
+int						free_stack(t_stack *stack);
 
 #endif

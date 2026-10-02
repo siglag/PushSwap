@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:52:47 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 15:30:41 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 00:14:36 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int	strategies_router(t_parsed *parsed)
 		return (medium_strategy(stack));
 	else if (parsed->strategy == COMPLEX)
 		return (complex_strategy(stack));
-	else
-		return (0);
+	free_stack(stack);
+	return (0);
 }
