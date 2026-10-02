@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 16:31:35 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/29 17:04:08 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:12:39 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 // The last element becomes the first in stack a
-void	rra(t_stack *stack, bool print_and_count) 
+void	rra(t_stack *stack, bool bench, bool print)
 {
 	int	last;
 	int	i;
@@ -27,16 +28,14 @@ void	rra(t_stack *stack, bool print_and_count)
 		i--;
 	}
 	stack->a[0] = last;
-	 if (print_and_count)
-        {
-                if (stack->parsed && stack->parsed->operations)
-                        stack->parsed->operations->rra++;
-                write(1, "rra\n", 4);
-        }
+	if (bench)
+		stack->parsed->operations.rra++;
+	else if (print)
+		write(1, "rra\n", 4);
 }
 
 // The last element becomes the first in stack b
-void	rrb(t_stack *stack, bool print_and_count)
+void	rrb(t_stack *stack, bool bench, bool print)
 {
 	int	last;
 	int	i;
@@ -51,23 +50,21 @@ void	rrb(t_stack *stack, bool print_and_count)
 		i--;
 	}
 	stack->b[0] = last;
-	 if (print_and_count)
-        {
-                if (stack->parsed && stack->parsed->operations)
-                        stack->parsed->operations->rrb++;
-                write(1, "rrb\n", 4);
-        }
+	if (bench)
+		stack->parsed->operations.rrb++;
+	else if (print)
+		write(1, "rrb\n", 4);
 }
 
 // rra and rrb at the same time
-void	rrr(t_stack *stack)
+void	rrr(t_stack *stack, bool bench, bool print)
 {
-	if (!stack || (stack->size_a < 2 && stack->size_b < 2)) 
+	if (!stack || (stack->size_a < 2 && stack->size_b < 2))
 		return ;
-	rra(stack, false);
-	rrb(stack, false);
-	if (stack->parsed && stack->parsed->operations)
-		stack->parsed->operations->rrr++;
-	write(1, "rrr\n", 4);
-
+	rra(stack, false, false);
+	rrb(stack, false, false);
+	if (bench)
+		stack->parsed->operations.rrr++;
+	else if (print)
+		write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 15:58:42 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:22:14 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ enum					e_strategies
 	COMPLEX = 4
 };
 
-typedef struct s_stack
-{
-	int					*a;
-	int					*b;
-	int					size_a;
-	int					size_b;
-}						t_stack;
-
 typedef struct s_operations
 {
 	int	sa;
@@ -68,19 +60,28 @@ typedef struct s_parsed
 	double				disorder;
 }						t_parsed;
 
+typedef struct s_stack
+{
+	int					*a;
+	int					*b;
+	int					size_a;
+	int					size_b;
+	t_parsed			*parsed;
+}						t_stack;
+
 t_stack					*init_stack(t_parsed *parsed);
 //  OPERATIONS
-void					sa(t_stack *stack);
-void					sb(t_stack *stack);
-void					ss(t_stack *stack);
-void					pa(t_stack *stack);
-void					pb(t_stack *stack);
-void					ra(t_stack *stack, bool print_and_count);
-void					rb(t_stack *stack, bool print_and_count);
-void					rr(t_stack *stack);
-void					rra(t_stack *stack, bool print_and_count);
-void					rrb(t_stack *stack, bool print_and_count);
-void					rrr(t_stack *stack);
+void					sa(t_stack *stack, bool bench, bool print);
+void					sb(t_stack *stack, bool bench, bool print);
+void					ss(t_stack *stack, bool bench, bool print);
+void					pa(t_stack *stack, bool bench, bool print);
+void					pb(t_stack *stack, bool bench, bool print);
+void					ra(t_stack *stack, bool bench, bool print);
+void					rb(t_stack *stack, bool bench, bool print);
+void					rr(t_stack *stack, bool bench, bool print);
+void					rra(t_stack *stack, bool bench, bool print);
+void					rrb(t_stack *stack, bool bench, bool print);
+void					rrr(t_stack *stack, bool bench, bool print);
 
 size_t					ft_strlen(const char *str);
 char					**ft_split(char const *s, char c);
@@ -111,5 +112,7 @@ int						complex_strategy(t_stack *stack);
 int						medium_strategy(t_stack *stack);
 int						simple_strategy(t_stack *stack);
 int						strategies_router(t_parsed *parsed);
+int						calculate_disorder(t_parsed *parsed);
+int						bench(t_parsed *parsed);
 
 #endif

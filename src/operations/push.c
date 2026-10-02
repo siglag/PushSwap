@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 13:42:05 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/29 14:46:14 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:19:06 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 //Take the first element at the top of b and put it at the top of a
-void	pa(t_stack *stack)
+void	pa(t_stack *stack, bool bench, bool print)
 {
 	int	i;
 
@@ -33,14 +34,14 @@ void	pa(t_stack *stack)
 	}
 	stack->size_a++;
 	stack->size_b--;
-
-	if (stack->parsed && stack->parsed->operations)
-                stack->parsed->operations->pa++;
-        write(1, "pa\n", 3);
+	if (bench)
+		stack->parsed->operations.pa++;
+	if (print)
+		write(1, "pa\n", 3);
 }
 
 //Take the first element at the top of a and put it at the top of b
-void	pb(t_stack *stack)
+void	pb(t_stack *stack, bool bench, bool print)
 {
 	int	i;
 
@@ -61,8 +62,8 @@ void	pb(t_stack *stack)
 	}
 	stack->size_b++;
 	stack->size_a--;
-
-	if (stack->parsed && stack->parsed->operations)
-                stack->parsed->operations->pb++;
-        write(1, "pb\n", 3);
+	if (bench)
+		stack->parsed->operations.pb++;
+	if (print)
+		write(1, "pb\n", 3);
 }

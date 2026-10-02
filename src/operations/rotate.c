@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 14:46:49 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/29 16:42:45 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:13:08 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 // The first element becomes the last in stack a
-void	ra(t_stack *stack, bool print_and_count)
+void	ra(t_stack *stack, bool bench, bool print)
 {
 	int	first;
 	int	i;
@@ -27,16 +28,14 @@ void	ra(t_stack *stack, bool print_and_count)
 		i++;
 	}
 	stack->a[stack->size_a - 1] = first;
-	if (print_and_count)
-	{
-		if (stack->parsed && stack->parsed->operations)
-                	stack->parsed->operations->ra++;
-        	write(1, "ra\n", 3);
-	}
+	if (bench)
+		stack->parsed->operations.ra++;
+	else if (print)
+		write(1, "ra\n", 3);
 }
 
 // The first element becomes the last in stack b
-void	rb(t_stack *stack, bool print_and_count)
+void	rb(t_stack *stack, bool bench, bool print)
 {
 	int	first;
 	int	i;
@@ -51,23 +50,21 @@ void	rb(t_stack *stack, bool print_and_count)
 		i++;
 	}
 	stack->b[stack->size_b - 1] = first;
-	
-	if (print_and_count)
-	{
-		if (stack->parsed && stack->parsed->operations)
-                	stack->parsed->operations->rb++;
-        	write(1, "rb\n", 3);
-	}
+	if (bench)
+		stack->parsed->operations.rb++;
+	else if (print)
+		write(1, "rb\n", 3);
 }
 
 // ra and rb at the same time
-void	rr(t_stack *stack)
+void	rr(t_stack *stack, bool bench, bool print)
 {
-	if (!stack || ( stack->size_a < 2 && stack->size_b < 2))
+	if (!stack || (stack->size_a < 2 && stack->size_b < 2))
 		return ;
-	ra(stack,false);
-	rb(stack,false);
-	 if (stack->parsed && stack->parsed->operations)
-                        stack->parsed->operations->rr++;
-                write(1, "rr\n", 3);
+	ra(stack, false, false);
+	rb(stack, false, false);
+	if (bench)
+		stack->parsed->operations.rr++;
+	else if (print)
+		write(1, "rr\n", 3);
 }
