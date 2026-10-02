@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:11:17 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 00:12:28 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 01:59:29 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,35 @@ int	init_parsed(t_parsed **parsed)
 	(*parsed)->disorder = -1;
 	(*parsed)->operations = (t_operations){0};
 	return (1);
+}
+
+/*
+	extract the flags out of the args
+*/
+int	extract_flags(t_parsed *parsed, int argc, char **args)
+{
+	int	arg;
+	int	flags_found;
+	int	has_strategy;
+	int	result;
+
+	arg = 0;
+	flags_found = 0;
+	has_strategy = 0;
+	while (arg < argc)
+	{
+		if (ft_strncmp(args[arg], "--", 2) == 0)
+		{
+			result = handle_flag(parsed, args[arg], &has_strategy);
+			if (result < 0)
+				return (-1);
+			if (!result)
+				return (-1);
+			flags_found++;
+		}
+		arg++;
+	}
+	return (flags_found);
 }
 
 t_parsed	*parser(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 00:14:14 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 02:01:48 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ int						bench(t_parsed *parsed);
 char					*strategy_name(t_parsed *parsed);
 char					*bench_strategy(t_parsed *parsed);
 int						free_stack(t_stack *stack);
+int						handle_flag(t_parsed *parsed,
+							char *arg, int *has_strategy);
 
 #endif

@@ -12,7 +12,7 @@ char	*bench_strategy(t_parsed *parsed)
 		return ("NULL");
 }
 
-int count_operations(t_parsed *parsed)
+int	count_operations(t_parsed *parsed)
 {
 	parsed->operations.total += parsed->operations.pa;
 	parsed->operations.total += parsed->operations.pb;
@@ -28,7 +28,7 @@ int count_operations(t_parsed *parsed)
 	return (parsed->operations.total);
 }
 
-char *strategy_name(t_parsed *parsed)
+char	*strategy_name(t_parsed *parsed)
 {
 	if (parsed->adaptive == true)
 		return ("ADAPTIVE");

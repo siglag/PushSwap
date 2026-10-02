@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:03:13 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 22:32:56 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 01:58:26 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,39 +88,24 @@ int	extract_strategy(char *strategy)
 		return (MEDIUM);
 	if (ft_strcasecmp(strategy, "--complex") == 0)
 		return (COMPLEX);
-	if (ft_strcasecmp(strategy, "--bench") == 0)
-		return (ADAPTIVE);
 	return (0);
 }
 
-/*
-	extract the flags out of the args
-*/
-int	extract_flags(t_parsed *parsed, int argc, char **args)
+int	handle_flag(t_parsed *parsed, char *arg, int *has_strategy)
 {
-	int	arg;
-	int	flags_found;
-	int	has_startegy;
+	int	strategy;
 
-	arg = 0;
-	flags_found = 0;
-	has_startegy = 0;
-	while (arg < argc)
+	if (ft_strcasecmp(arg, "--bench") == 0)
 	{
-		if (ft_strncmp(args[arg], "--", 2) == 0)
-		{
-			parsed->strategy = extract_strategy(args[arg]);
-			if (parsed->strategy)
-			{
-				if (has_startegy)
-					return (-1);
-				has_startegy = 1;
-			}
-			else
-				parsed->is_bench = true;
-			flags_found++;
-		}
-		arg++;
+		parsed->is_bench = true;
+		return (1);
 	}
-	return (flags_found);
+	strategy = extract_strategy(arg);
+	if (!strategy)
+		return (0);
+	if (*has_strategy)
+		return (-1);
+	parsed->strategy = strategy;
+	*has_strategy = 1;
+	return (1);
 }
