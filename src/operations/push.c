@@ -33,6 +33,10 @@ void	pa(t_stack *stack)
 	}
 	stack->size_a++;
 	stack->size_b--;
+
+	if (stack->parsed && stack->parsed->operations)
+                stack->parsed->operations->pa++;
+        write(1, "pa\n", 3);
 }
 
 //Take the first element at the top of a and put it at the top of b
@@ -57,4 +61,8 @@ void	pb(t_stack *stack)
 	}
 	stack->size_b++;
 	stack->size_a--;
+
+	if (stack->parsed && stack->parsed->operations)
+                stack->parsed->operations->pb++;
+        write(1, "pb\n", 3);
 }
