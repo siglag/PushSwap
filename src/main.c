@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/09/30 08:44:37 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 15:24:40 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ int	main(int argc, char **argv)
 	if (!parsed)
 	{
 		printf("RESULT: REJECTED\n");
+		return (1);
+	}
+	if (!disorder(parsed) || !strategies_router(parsed))
+	{
+		printf("RESULT: REJECTED\n");
+		free_parsed(parsed);
 		return (1);
 	}
 	printf("RESULT: ACCEPTED\n");

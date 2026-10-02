@@ -2,5 +2,6 @@
 
 int	simple_strategy(t_stack *stack)
 {
-	return (stack->size_a + stack->size_b);
+	printf("Using simple strategy\n");
+	return (stack->size_a + stack->size_b + 1);
 }
