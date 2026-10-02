@@ -6,13 +6,13 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:55:38 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 15:57:12 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 13:48:23 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int disorder(t_parsed *parsed)
+int	disorder(t_parsed *parsed)
 {
 	if (!parsed)
 		return (-1);

@@ -6,14 +6,13 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:52:47 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 16:34:32 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 13:29:09 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int strategies_router(t_parsed *parsed)
+int	strategies_router(t_parsed *parsed)
 {
 	t_stack	*stack;
 
