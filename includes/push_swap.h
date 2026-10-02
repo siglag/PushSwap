@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 21:22:14 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 22:07:27 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ char					*ft_substr(char const *s,
 void					free_words(char **result, int count);
 int						extract_token(int *sequence,
 							char **numbers, int *index);
-int						disorder(t_parsed *parsed);
 int						complex_strategy(t_stack *stack);
 int						medium_strategy(t_stack *stack);
 int						simple_strategy(t_stack *stack);

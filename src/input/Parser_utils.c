@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:03:13 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/01 00:45:56 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 22:32:56 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int	extract_strategy(char *strategy)
 		return (MEDIUM);
 	if (ft_strcasecmp(strategy, "--complex") == 0)
 		return (COMPLEX);
+	if (ft_strcasecmp(strategy, "--bench") == 0)
+		return (ADAPTIVE);
 	return (0);
 }
 
