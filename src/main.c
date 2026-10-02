@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 18:25:40 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:14:47 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ static void	print_parsed(t_parsed *parsed)
 {
 	size_t	index;
 
-	printf("  strategy:      %d\n", parsed->strategy);
-	printf("  is_bench:      %d\n", parsed->is_bench);
-	printf("  sequence_size: %zu\n", parsed->sequence_size);
-	printf("  sequence:      ");
+	printf("\tstrategy:      %d\n", parsed->strategy);
+	printf("\tis_bench:      %d\n", parsed->is_bench);
+	printf("\tdisorder:      %f\n", parsed->disorder);
+	printf("\tsequence_size: %zu\n", parsed->sequence_size);
+	printf("\tsequence:      ");
 	index = 0;
 	while (index < parsed->sequence_size)
 	{
@@ -44,7 +45,9 @@ int	main(int argc, char **argv)
 		printf("RESULT: REJECTED\n");
 		return (1);
 	}
-	if (!disorder(parsed) || !strategies_router(parsed) || !bench(parsed))
+	if (!calculate_disorder(parsed)
+		|| !strategies_router(parsed)
+		|| !bench(parsed))
 	{
 		printf("RESULT: REJECTED\n");
 		free_parsed(parsed);
