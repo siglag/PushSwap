@@ -12,7 +12,7 @@
 #include "push_swap.h"
 
 // The first element becomes the last in stack a
-void	ra(t_stack *stack)
+void	ra(t_stack *stack, bool print_and_count)
 {
 	int	first;
 	int	i;
@@ -27,13 +27,16 @@ void	ra(t_stack *stack)
 		i++;
 	}
 	stack->a[stack->size_a - 1] = first;
-	if (stack->parsed && stack->parsed->operations)
-                stack->parsed->operations->ra++;
-        write(1, "ra\n", 3);
+	if (print_and_count)
+	{
+		if (stack->parsed && stack->parsed->operations)
+                	stack->parsed->operations->ra++;
+        	write(1, "ra\n", 3);
+	}
 }
 
 // The first element becomes the last in stack b
-void	rb(t_stack *stack)
+void	rb(t_stack *stack, bool print_and_count)
 {
 	int	first;
 	int	i;
@@ -48,17 +51,23 @@ void	rb(t_stack *stack)
 		i++;
 	}
 	stack->b[stack->size_b - 1] = first;
-
-	if (stack->parsed && stack->parsed->operations)
-                stack->parsed->operations->rb++;
-        write(1, "rb\n", 3);
+	
+	if (print_and_count)
+	{
+		if (stack->parsed && stack->parsed->operations)
+                	stack->parsed->operations->rb++;
+        	write(1, "rb\n", 3);
+	}
 }
-//i am gonna change it
+
 // ra and rb at the same time
 void	rr(t_stack *stack)
 {
-	if (!stack)
+	if (!stack || ( stack->size_a < 2 && stack->size_b < 2))
 		return ;
-	ra(stack);
-	rb(stack);
+	ra(stack,false);
+	rb(stack,false);
+	 if (stack->parsed && stack->parsed->operations)
+                        stack->parsed->operations->rr++;
+                write(1, "rr\n", 3);
 }
