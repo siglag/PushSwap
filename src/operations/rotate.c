@@ -53,7 +53,7 @@ void	rb(t_stack *stack)
                 stack->parsed->operations->rb++;
         write(1, "rb\n", 3);
 }
-
+//i am gonna change it
 // ra and rb at the same time
 void	rr(t_stack *stack)
 {
