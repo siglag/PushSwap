@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 14:46:49 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/02 21:13:08 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:45:08 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ra(t_stack *stack, bool bench, bool print)
 	stack->a[stack->size_a - 1] = first;
 	if (bench)
 		stack->parsed->operations.ra++;
-	else if (print)
+	if (print)
 		write(1, "ra\n", 3);
 }
 
@@ -52,7 +52,7 @@ void	rb(t_stack *stack, bool bench, bool print)
 	stack->b[stack->size_b - 1] = first;
 	if (bench)
 		stack->parsed->operations.rb++;
-	else if (print)
+	if (print)
 		write(1, "rb\n", 3);
 }
 
@@ -65,6 +65,6 @@ void	rr(t_stack *stack, bool bench, bool print)
 	rb(stack, false, false);
 	if (bench)
 		stack->parsed->operations.rr++;
-	else if (print)
+	if (print)
 		write(1, "rr\n", 3);
 }
