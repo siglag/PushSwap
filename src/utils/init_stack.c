@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 11:19:52 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/09/29 17:07:44 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/02 21:31:00 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
+
 //copy element from the seq into the stack a
 t_stack	*init_stack(t_parsed *parsed)
 {
@@ -31,5 +33,6 @@ t_stack	*init_stack(t_parsed *parsed)
 	}
 	stack->size_a = (int)parsed->sequence_size;
 	stack->size_b = 0;
+	stack->parsed = parsed;
 	return (stack);
 }
