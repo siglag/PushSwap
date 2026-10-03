@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 12:10:53 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 23:57:09 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 	parsed = parser(argc, argv);
 	if (!parsed)
 	{
-		printf("RESULT: REJECTED\n");
+		ft_printf("RESULT: REJECTED\n");
 		return (1);
 	}
 	if (!calculate_disorder(parsed) || !strategies_router(parsed))
 	{
-		printf("RESULT: REJECTED\n");
+		ft_printf("RESULT: REJECTED\n");
 		free_parsed(parsed);
 		return (1);
 	}

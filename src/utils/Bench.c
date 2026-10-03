@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 13:15:56 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/03 16:48:34 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/03 23:38:23 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,21 @@ int	bench(t_parsed *parsed)
 {
 	if (!parsed->is_bench)
 		return (0);
-	printf("[bench] disorder: %.2f%%\n", parsed->disorder * 100);
-	printf("[bench] strategy: %s / %s\n",
+	ft_printf("[bench] disorder: %s%%\n", ft_dtoa(parsed->disorder * 100, 2));
+	ft_printf("[bench] strategy: %s / %s\n",
 		strategy_name(parsed),
 		bench_strategy(parsed));
-	printf("[bench] total_ops: %d\n", count_operations(parsed));
-	printf("[bench] sa: %d  sb: %d  ss: %d  ",
+	ft_printf("[bench] total_ops: %d\n", count_operations(parsed));
+	ft_printf("[bench] sa: %d  sb: %d  ss: %d  ",
 		parsed->operations.sa,
 		parsed->operations.sb,
 		parsed->operations.ss);
-	printf("pa: %d  pb: %d\n", parsed->operations.pa, parsed->operations.pb);
-	printf("[bench] ra: %d  rb: %d  rr: %d  ",
+	ft_printf("pa: %d  pb: %d\n", parsed->operations.pa, parsed->operations.pb);
+	ft_printf("[bench] ra: %d  rb: %d  rr: %d  ",
 		parsed->operations.ra,
 		parsed->operations.rb,
 		parsed->operations.rr);
-	printf("rra: %d  rrb: %d  rrr: %d\n",
+	ft_printf("rra: %d  rrb: %d  rrr: %d\n",
 		parsed->operations.rra,
 		parsed->operations.rrb,
 		parsed->operations.rrr);
