@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 14:46:49 by sbanimou          #+#    #+#             */
 /*   Updated: 2026/10/03 09:51:18 by sbanimou         ###   ########.fr       */
