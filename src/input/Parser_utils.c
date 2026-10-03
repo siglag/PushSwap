@@ -6,25 +6,41 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 02:03:13 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 01:58:26 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 12:33:34 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	extract_token(int *sequence, char **numbers, int *index)
+int is_duplicate(int *sequence, int index)
 {
-	int	token;
+    int previous;
 
-	token = 0;
-	while (numbers[token])
-	{
-		if (!ft_atoi(numbers[token], &sequence[*index]))
-			return (-1);
-		(*index)++;
-		token++;
-	}
-	return (token);
+    previous = 0;
+    while (previous < index)
+    {
+        if (sequence[previous] == sequence[index])
+            return (1);
+        previous++;
+    }
+    return (0);
+}
+
+int extract_token(int *sequence, char **numbers, int *index)
+{
+    int token;
+
+    token = 0;
+    while (numbers[token])
+    {
+        if (!ft_atoi(numbers[token], &sequence[*index]))
+            return (-1);
+        if (is_duplicate(sequence, *index))
+            return (-1);
+        (*index)++;
+        token++;
+    }
+    return (token);
 }
 
 int	extract_numbers(int *sequence, int argc, char **argv)
@@ -56,27 +72,6 @@ int	extract_numbers(int *sequence, int argc, char **argv)
 	return (1);
 }
 
-int	extract_sequence(t_parsed *parsed, int argc, char **argv)
-{
-	int	arg;
-	int	length;
-
-	arg = 1;
-	length = 0;
-	while (arg < argc)
-	{
-		if (ft_isdigit(argv[arg]))
-			length += count_numbers(argv[arg]);
-		arg++;
-	}
-	parsed->sequence_size = length;
-	parsed->sequence = malloc(sizeof(int) * length);
-	if (!parsed->sequence)
-		return (0);
-	if (!extract_numbers(parsed->sequence, argc, argv))
-		return (0);
-	return (1);
-}
 
 int	extract_strategy(char *strategy)
 {

@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:11:17 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 01:59:29 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 12:32:13 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,28 @@ int	init_parsed(t_parsed **parsed)
 	(*parsed)->adaptive = false;
 	(*parsed)->disorder = -1;
 	(*parsed)->operations = (t_operations){0};
+	return (1);
+}
+
+int	extract_sequence(t_parsed *parsed, int argc, char **argv)
+{
+	int	arg;
+	int	length;
+
+	arg = 1;
+	length = 0;
+	while (arg < argc)
+	{
+		if (ft_isdigit(argv[arg]))
+			length += count_numbers(argv[arg]);
+		arg++;
+	}
+	parsed->sequence_size = length;
+	parsed->sequence = malloc(sizeof(int) * length);
+	if (!parsed->sequence)
+		return (0);
+	if (!extract_numbers(parsed->sequence, argc, argv))
+		return (0);
 	return (1);
 }
 
