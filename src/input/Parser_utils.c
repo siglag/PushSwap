@@ -12,35 +12,35 @@
 
 #include "push_swap.h"
 
-int is_duplicate(int *sequence, int index)
+int	is_duplicate(int *sequence, int index)
 {
-    int previous;
+	int	previous;
 
-    previous = 0;
-    while (previous < index)
-    {
-        if (sequence[previous] == sequence[index])
-            return (1);
-        previous++;
-    }
-    return (0);
+	previous = 0;
+	while (previous < index)
+	{
+		if (sequence[previous] == sequence[index])
+			return (1);
+		previous++;
+	}
+	return (0);
 }
 
-int extract_token(int *sequence, char **numbers, int *index)
+int	extract_token(int *sequence, char **numbers, int *index)
 {
-    int token;
+	int	token;
 
-    token = 0;
-    while (numbers[token])
-    {
-        if (!ft_atoi(numbers[token], &sequence[*index]))
-            return (-1);
-        if (is_duplicate(sequence, *index))
-            return (-1);
-        (*index)++;
-        token++;
-    }
-    return (token);
+	token = 0;
+	while (numbers[token])
+	{
+		if (!ft_atoi(numbers[token], &sequence[*index]))
+			return (-1);
+		if (is_duplicate(sequence, *index))
+			return (-1);
+		(*index)++;
+		token++;
+	}
+	return (token);
 }
 
 int	extract_numbers(int *sequence, int argc, char **argv)
@@ -71,7 +71,6 @@ int	extract_numbers(int *sequence, int argc, char **argv)
 	}
 	return (1);
 }
-
 
 int	extract_strategy(char *strategy)
 {
