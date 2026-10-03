@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string2.c                                          :+:      :+:    :+:   */
+/*   String2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:49:07 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/02 13:57:34 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 23:56:02 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,33 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	sub[index] = '\0';
 	return (sub);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	unsigned int	len1;
+	unsigned int	len2;
+	unsigned int	i;
+	char			*res;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	res = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < len1)
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	while (i < len1 + len2)
+	{
+		res[i] = s2[i - len1];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
