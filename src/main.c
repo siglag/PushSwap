@@ -6,39 +6,16 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 02:03:46 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 12:10:53 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-// all of this shit is temp, will deal with it later when we're done with the strategies
-static void	print_parsed(t_parsed *parsed)
-{
-	size_t	index;
-
-	printf("\tstrategy:      %s / %s / %d \n", strategy_name(parsed), bench_strategy(parsed), parsed->strategy);
-	printf("\tis_bench:      %d\n", parsed->is_bench);
-	printf("\tdisorder: %f%%\n", parsed->disorder * 100);
-	printf("\tsequence_size: %zu\n", parsed->sequence_size);
-	printf("\tsequence:      ");
-	index = 0;
-	while (index < parsed->sequence_size)
-	{
-		printf("%d", parsed->sequence[index]);
-		if (index + 1 < parsed->sequence_size)
-			printf(", ");
-		index++;
-	}
-	printf("\n");
-}
 
 int	main(int argc, char **argv)
 {
 	t_parsed	*parsed;
 
-	printf("=== push_swap parser test ===\n");
-	printf("argc: %d\n", argc);
 	parsed = parser(argc, argv);
 	if (!parsed)
 	{
@@ -52,8 +29,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	bench(parsed);
-	printf("RESULT: ACCEPTED\n");
-	print_parsed(parsed);
 	free_parsed(parsed);
 	return (0);
 }

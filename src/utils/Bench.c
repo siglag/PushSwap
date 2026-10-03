@@ -47,5 +47,11 @@ int	bench(t_parsed *parsed)
 	if (!parsed->is_bench)
 		return (0);
 	printf("[bench] disorder: %.2f%%\n", parsed->disorder * 100);
+	printf("[bench] strategy: %s / %s\n", strategy_name(parsed), bench_strategy(parsed));
+	printf("[bench] total_ops: %d\n", count_operations(parsed));
+	printf("[bench] sa: %d  sb: %d  ss: %d  ", parsed->operations.sa, parsed->operations.sb, parsed->operations.ss);
+	printf("pa: %d  pb: %d\n", parsed->operations.pa, parsed->operations.pb);
+	printf("[bench] ra: %d  rb: %d  rr: %d  ", parsed->operations.ra, parsed->operations.rb, parsed->operations.rr);
+	printf("rra: %d  rrb: %d  rrr: %d\n", parsed->operations.rra, parsed->operations.rrb, parsed->operations.rrr);
 	return (1);
 }
