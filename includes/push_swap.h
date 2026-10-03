@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 02:01:48 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 09:59:51 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <stdbool.h> //for bool
+# include <stdio.h>   // temp
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> // temp
 
 /*
 	First of all, here we'll have all the:
@@ -36,18 +36,18 @@ enum					e_strategies
 
 typedef struct s_operations
 {
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-	int	total;
+	int					sa;
+	int					sb;
+	int					ss;
+	int					pa;
+	int					pb;
+	int					ra;
+	int					rb;
+	int					rr;
+	int					rra;
+	int					rrb;
+	int					rrr;
+	int					total;
 }						t_operations;
 
 // config
@@ -99,16 +99,16 @@ int						validate_flag(char *flag);
 int						extract_flags(t_parsed *parsed, int argc, char **args);
 int						extract_strategy(char *strategy);
 int						ft_atoi(char *str, int *result);
-int						extract_sequence(t_parsed *parsed,
-							int argc, char **args);
+int						extract_sequence(t_parsed *parsed, int argc,
+							char **args);
 int						count_numbers(char *str);
 int						extract_numbers(int *sequence, int argc, char **argv);
 char					**ft_split(char const *str, char c);
-char					*ft_substr(char const *s,
-							unsigned int start, size_t len);
+char					*ft_substr(char const *s, unsigned int start,
+							size_t len);
 void					free_words(char **result, int count);
-int						extract_token(int *sequence,
-							char **numbers, int *index);
+int						extract_token(int *sequence, char **numbers,
+							int *index);
 int						complex_strategy(t_stack *stack);
 int						medium_strategy(t_stack *stack);
 int						simple_strategy(t_stack *stack);
@@ -117,8 +117,8 @@ int						calculate_disorder(t_parsed *parsed);
 int						bench(t_parsed *parsed);
 char					*strategy_name(t_parsed *parsed);
 char					*bench_strategy(t_parsed *parsed);
-int						free_stack(t_stack *stack);
-int						handle_flag(t_parsed *parsed,
-							char *arg, int *has_strategy);
+void					free_stack(t_stack *stack);
+int						handle_flag(t_parsed *parsed, char *arg,
+							int *has_strategy);
 
 #endif

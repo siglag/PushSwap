@@ -6,13 +6,13 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 11:19:52 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/03 02:09:22 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/03 10:00:54 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//copy element from the seq into the stack a
+// copy element from the seq into the stack a
 t_stack	*init_stack(t_parsed *parsed)
 {
 	t_stack	*stack;
@@ -37,14 +37,13 @@ t_stack	*init_stack(t_parsed *parsed)
 	return (stack);
 }
 
-int	free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
 	if (!stack)
-		return (0);
+		return ;
 	if (stack->a)
 		free(stack->a);
 	if (stack->b)
 		free(stack->b);
 	free(stack);
-	return (1);
 }
