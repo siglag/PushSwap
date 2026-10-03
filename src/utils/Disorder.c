@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   Disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 16:19:26 by sbanimou          #+#    #+#             */
 /*   Updated: 2026/10/03 10:13:41 by sbanimou         ###   ########.fr       */

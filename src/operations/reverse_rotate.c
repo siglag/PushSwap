@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 16:31:35 by sbanimou          #+#    #+#             */
 /*   Updated: 2026/10/03 09:51:46 by sbanimou         ###   ########.fr       */

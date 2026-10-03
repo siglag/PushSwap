@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 13:42:05 by sbanimou          #+#    #+#             */
 /*   Updated: 2026/10/03 09:50:59 by sbanimou         ###   ########.fr       */
