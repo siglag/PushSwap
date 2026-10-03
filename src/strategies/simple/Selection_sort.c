@@ -12,22 +12,6 @@
 #include "push_swap.h"
 
 //((Simple))handles small stacks: 2 to 5 elements
-static bool	is_sorted(t_stack *stack)
-{
-	int	i;
-
-	if (!stack || stack->size_a < 2)
-		return (true);
-	i = 0;
-	while (i < stack->size_a - 1)
-	{
-		if (stack->a[i] > stack->a[i + 1])
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
 static int	get_min_index(t_stack *stack)
 {
 	int	min_idx;

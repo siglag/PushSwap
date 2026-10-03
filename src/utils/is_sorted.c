@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_stack.c                                      :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/03 12:44:55 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/03 14:34:59 by sbanimou         ###   ########.fr       */
+/*   Created: 2026/10/03 15:33:09 by sbanimou          #+#    #+#             */
+/*   Updated: 2026/10/03 15:33:42 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	index_stack(t_stack *stack)
+bool	is_sorted(t_stack *stack)
 {
-	int	*temp;
 	int	i;
-	int	j;
-	int	count;
 
-	if (!stack || stack->size_a <= 0)
-		return ;
-	temp = malloc(sizeof(int) * stack->size_a);
-	if (!temp)
-		return ;
-	i = -1;
-	while (++i < stack->size_a)
+	if (!stack || stack->size_a < 2)
+		return (true);
+	i = 0;
+	while (i < stack->size_a - 1)
 	{
-		count = 0;
-		j = -1;
-		while (++j < stack->size_a)
-			if (stack->a[j] < stack->a[i])
-				count++;
-		temp[i] = count;
+		if (stack->a[i] > stack->a[i + 1])
+			return (false);
+		i++;
 	}
-	i = -1;
-	while (++i < stack->size_a)
-		stack->a[i] = temp[i];
-	free(temp);
+	return (true);
 }

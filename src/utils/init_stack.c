@@ -6,7 +6,7 @@
 /*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 11:19:52 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/03 13:42:35 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/03 15:24:52 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ t_stack	*init_stack(t_parsed *parsed)
 		return (NULL);
 	stack->a = malloc(sizeof(int) * parsed->sequence_size);
 	stack->b = malloc(sizeof(int) * parsed->sequence_size);
-	stack->index_a = malloc(sizeof(int) * parsed->sequence_size);
-	stack->index_b = malloc(sizeof(int) * parsed->sequence_size);
-	if (!stack->a || !stack->b || !stack->index_a || !stack->index_b)
-		return (free_stack(stack), NULL);
+	if (!stack->a || !stack->b)
+		return (free(stack), NULL);
 	i = 0;
 	while (i < parsed->sequence_size)
 	{
@@ -47,9 +45,5 @@ void	free_stack(t_stack *stack)
 		free(stack->a);
 	if (stack->b)
 		free(stack->b);
-	if (stack->index_a)
-		free(stack->index_a);
-	if (stack->index_b)
-		free(stack->index_b);
 	free(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: sbanimou <sbanimou@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 10:35:07 by sbanimou          #+#    #+#             */
-/*   Updated: 2026/10/03 13:44:10 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/03 15:28:52 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -15,16 +15,19 @@
 static void	push_chunks_to_b(t_stack *stack, int chunk_size)
 {
 	int	current_max;
+	int	i;
 
 	current_max = chunk_size;
+	i = 0;
 	while (stack->size_a > 0)
 	{
-		if (stack->index_a[0] < current_max)
+		if (stack->a[0] < current_max)
 		{
 			pb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
-			if (stack->index_b[0] < (current_max - (chunk_size / 2)))
+			if (stack->b[0] < current_max - (chunk_size / 2))
 				rb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
-			if (stack->size_b == current_max)
+			i++;
+			if (i >= current_max)
 				current_max += chunk_size;
 		}
 		else
@@ -43,9 +46,9 @@ static int	find_max_index_pos(t_stack *stack)
 	max_pos = 0;
 	while (i < stack->size_b)
 	{
-		if (stack->index_b[i] > max_idx)
+		if (stack->b[i] > max_idx)
 		{
-			max_idx = stack->index_b[i];
+			max_idx = stack->b[i];
 			max_pos = i;
 		}
 		i++;
@@ -56,18 +59,21 @@ static int	find_max_index_pos(t_stack *stack)
 static void	push_back_to_a(t_stack *stack)
 {
 	int	max_pos;
+	int	steps;
 
 	while (stack->size_b > 0)
 	{
 		max_pos = find_max_index_pos(stack);
 		if (max_pos <= stack->size_b / 2)
 		{
-			while (max_pos-- > 0)
+			steps = max_pos;
+			while (steps-- > 0)
 				rb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
 		}
 		else
 		{
-			while (max_pos++ < stack->size_b)
+			steps = stack->size_b - max_pos;
+			while (steps-- > 0)
 				rrb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
 		}
 		pa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
@@ -80,6 +86,8 @@ int	medium_strategy(t_stack *stack)
 
 	if (!stack)
 		return (0);
+	if (is_sorted(stack))
+		return (1);
 	index_stack(stack);
 	if (stack->size_a <= 50)
 		chunk_size = 8;

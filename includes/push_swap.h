@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/27 18:49:15 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/03 12:49:38 by sbanimou         ###   ########.fr       */
+/*   Updated: 2026/10/03 15:36:08 by sbanimou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ typedef struct s_stack
 	int					*b;
 	int					size_a;
 	int					size_b;
-	int					*index_a;
-	int					*index_b;
-	int					capacity;
 	t_parsed			*parsed;
 }						t_stack;
 
@@ -124,4 +121,5 @@ void					free_stack(t_stack *stack);
 int						handle_flag(t_parsed *parsed, char *arg,
 							int *has_strategy);
 void					index_stack(t_stack *stack);
+bool					is_sorted(t_stack *stack);
 #endif
