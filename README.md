@@ -6,34 +6,45 @@ _This activity has been created as part of the 42 curriculum by mohmmah, sbanimo
 
 ## Project flow
 
-```
 argv
   |
   v
-parser                     validate argv, extract sequence + flags
-  |-- Validator            flags before numbers, known flags only
-  |-- Parser_utils         parse ints, reject duplicates
-  v
-calculate_disorder         inversion ratio of the sequence
+parser
+  |-- Validator       validate flags and argument order
+  |-- Parser_utils   parse integers, reject duplicates
   |
   v
+calculate_disorder
+  |                     inversion ratio of the input
+  v
 strategies_router
-  |-- init_stack           copy sequence into stack a
-  |-- choose_strategy      ADAPTIVE: disorder < 0.2 -> SIMPLE
-  |                       disorder < 0.5 -> MEDIUM, else COMPLEX
+  |
+  |-- init_stack       initialize stack A, stack B
+  |
+  |-- choose_strategy
+  |     ADAPTIVE:
+  |       disorder < 0.20        → SIMPLE
+  |       0.20 ≤ disorder < 0.50 → MEDIUM
+  |       disorder ≥ 0.50        → COMPLEX
+  |
   |-- dispatch
-  |     SIMPLE   selection sort    small inputs (2-5)
-  |     MEDIUM   chunk sort        medium inputs (6-100)
-  |     COMPLEX  radix sort        large inputs
-  |-- operations           every op mutates stacks, prints and/or counts
+  |     SIMPLE   → Selection Sort
+  |     MEDIUM   → Chunk Sort
+  |     COMPLEX  → LSD Radix Sort
+  |
+  |-- operations      execute and count Push_swap operations
+  |
   |-- free_stack
   |
   v
-bench                      only with --bench: print disorder, strategy, op counts
+bench
+  |
+  |-- only with --bench
+  |-- print disorder, strategy, complexity and operation counts
   |
   v
 free_parsed
-```
+
 
 ## Modules
 
