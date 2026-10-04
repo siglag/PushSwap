@@ -85,7 +85,7 @@ A → divide into chunks → push chunks to B
                     push back to A
 ```
 
-**Current complexity:** O(n²)
+**Current complexity:** O(n√n)
 
 > The current implementation does not yet guarantee the required O(n√n) complexity.
 
