@@ -96,7 +96,7 @@ A → divide into chunks → push chunks to B
                     push back to A
 ```
 
-**Current complexity:** O(n√n)
+**Current complexity:** O(n²)
 
 > The current implementation does not yet guarantee the required O(n√n) complexity.
 
@@ -121,6 +121,7 @@ process bit 2
 ```
 
 Radix sort
+**Complexity:** O(nlogn)
 
 ## Adaptive Strategy
 
