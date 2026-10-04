@@ -59,7 +59,7 @@ make
 
 Flags: `--simple`, `--medium`, `--complex`, `--adaptive` (default), `--bench` (print stats instead of the operation sequence). Flags come before the numbers; numbers may be space-separated in a single argument.
 ## Instructions
-# Build
+## Build
 
 ```bash
 make          # build
