@@ -111,6 +111,22 @@ process bit 2
 
 Radix sort
 
+## Adaptive Strategy
+
+The strategy is selected according to the input disorder:
+
+```text
+< 0.20        → Simple
+0.20 – < 0.50 → Medium
+≥ 0.50        → Complex
+```
+
+* **Simple:** Selection sort, O(n²)
+* **Medium:** Chunk sort, currently O(n²)
+* **Complex:** LSD Radix sort, O(n log n)
+
+All strategies use O(n) stack space. The thresholds are used to match the sorting method to the input's level of disorder.
+
 ## Usage
 
 ```bash
