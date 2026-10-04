@@ -5,7 +5,7 @@ _This activity has been created as part of the 42 curriculum by mohmmah, sbanimo
 **push_swap** sorts a stack of integers using a limited set of operations and prints the operation sequence that does it. Two stacks are involved: `a` (holds the input) and `b` (auxiliary). A strategy is picked from the input's disorder, or forced with a flag.
 
 ## Project flow
-
+```
 argv
   |
   v
@@ -44,7 +44,7 @@ bench
   |
   v
 free_parsed
-
+```
 
 ## Modules
 
