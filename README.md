@@ -1,7 +1,7 @@
 _This activity has been created as part of the 42 curriculum by mohmmah, sbanimou_
 
 # Push_swap
-
+## Description
 **push_swap** sorts a stack of integers using a limited set of operations and prints the operation sequence that does it. Two stacks are involved: `a` (holds the input) and `b` (auxiliary). A strategy is picked from the input's disorder, or forced with a flag.
 
 ## Project flow
@@ -67,6 +67,20 @@ make clean    # remove objects
 make fclean   # remove objects + binary
 make re       # rebuild
 ```
+## Testing
+
+The program was tested with:
+
+- Small inputs
+- Random inputs
+- Already sorted inputs
+- Reverse sorted inputs
+- Duplicate values
+- Invalid arguments
+- Different strategy flags
+- Benchmark mode
+
+
 ## Resources
 
 1. 42 Push_swap subject.
