@@ -67,6 +67,15 @@ make clean    # remove objects
 make fclean   # remove objects + binary
 make re       # rebuild
 ```
+## Resources
+
+1. 42 Push_swap subject.
+2. C documentation.
+3. Algorithm and data structure references.
+
+## AI Usage
+
+AI tools were used as a supporting resource during the project for research, troubleshooting, and documentation.
 
 ## Authors
 
