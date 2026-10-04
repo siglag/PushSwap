@@ -48,6 +48,68 @@ free_parsed
 - **`src/utils/`** — shared helpers: `init_stack`/`free_stack`, `index_stack` (rank compression so chunk/radix work on dense indexes), `is_sorted`, `Disorder` (inversion ratio), `Bench` (stats dump), plus string utilities (`String`, `Split`, `Itoa`, `Double_toa`). Why: infrastructure used by parser, router and strategies.
 
 - **`src/printf/`** — minimal `ft_printf`. Why: 42 constraint; used for errors and bench output.
+## Algorithm Selection
+
+### Simple — Selection Sort
+
+Selection sort is used for inputs with low disorder and small stacks.
+
+The algorithm repeatedly finds the smallest element in stack `a`, moves it to the top using the shortest rotation direction, and pushes it to stack `b`. After the remaining elements are sorted, the elements are pushed back to `a`.
+
+This approach is simple and predictable for small inputs.
+
+```text
+find minimum → rotate A → pb
+repeat until A is small
+sort remaining elements
+pa everything back to A
+```
+
+**Complexity:** O(n²)
+
+---
+
+### Medium — Chunk Sort
+
+The Medium strategy divides the normalized input into smaller ranges called chunks.
+
+Elements belonging to the current chunk are pushed from `a` to `b`. Rotations are used to organize the elements in `b`. Once all elements are in `b`, the largest elements are pushed back to `a` in descending order so that `a` becomes sorted.
+
+Chunk sorting reduces the amount of searching compared with treating every element independently.
+
+```text
+A → divide into chunks → push chunks to B
+                         ↓
+                    organize B
+                         ↓
+                    push back to A
+```
+
+**Current complexity:** O(n²)
+
+> The current implementation does not yet guarantee the required O(n√n) complexity.
+
+---
+
+### Complex — LSD Radix Sort
+
+The Complex strategy uses LSD (Least Significant Digit) Radix Sort on normalized indexes.
+
+The elements are processed bit by bit. For each bit, elements with a `0` bit are pushed to `b`, while elements with a `1` bit are rotated in `a`. The elements in `b` are then pushed back to `a`.
+
+The process continues from the least significant bit to the most significant bit.
+
+```text
+process bit 0
+    ↓
+process bit 1
+    ↓
+process bit 2
+    ↓
+...
+```
+
+Radix sort
 
 ## Usage
 
@@ -58,6 +120,7 @@ make
 ```
 
 Flags: `--simple`, `--medium`, `--complex`, `--adaptive` (default), `--bench` (print stats instead of the operation sequence). Flags come before the numbers; numbers may be space-separated in a single argument.
+
 ## Instructions
 ## Build
 
