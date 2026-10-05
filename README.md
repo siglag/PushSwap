@@ -1,4 +1,4 @@
-_This activity has been created as part of the 42 curriculum by mohmmah, sbanimou_
+_This activity has been created as part of the 42 curriculum by mohammah, sbanimou_
 
 # Push_swap
 
@@ -187,5 +187,5 @@ AI tools were used as a supporting resource during the project for research, tro
 
 ## Authors
 
-- `mohmmah`
+- `mohammah`
 - `sbanimou`
