@@ -18,7 +18,9 @@ int	choose_strategy(t_parsed *parsed)
 		return (0);
 	if (parsed->strategy == ADAPTIVE)
 	{
-		if (parsed->disorder < 0.2)
+		if (parsed->sequence_size <= 5)
+			parsed->strategy = SIMPLE;
+		else if (parsed->disorder < 0.2)
 			parsed->strategy = SIMPLE;
 		else if (parsed->disorder < 0.5)
 			parsed->strategy = MEDIUM;
