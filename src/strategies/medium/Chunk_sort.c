@@ -11,54 +11,60 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static int	get_chunk_size(int n)
+static void	push_current_chunk(t_stack *stack, int start, int end)
 {
-	int	size;
+	int	moved;
+	int	half;
 
-	size = 1;
-	while (size * size < n)
-		size++;
-	return (size);
-}
-
-static void	push_chunks_to_b(t_stack *stack, int chunk_size)
-{
-	int	current_max;
-
-	current_max = chunk_size;
-	while (stack->size_a > 0)
+	moved = 0;
+	half = (end - start) / 2;
+	while (moved < end - start)
 	{
-		if (stack->a[0] < current_max)
+		if (stack->a[0] >= start && stack->a[0] < end)
 		{
 			pb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
-			if (stack->size_b > 1 && stack->b[0] < current_max - (chunk_size
-					/ 2))
+			if (stack->b[0] < start + half)
 				rb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
-			if (current_max < stack->size_a + stack->size_b)
-				current_max++;
+			moved++;
 		}
 		else
 			ra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
 	}
 }
 
+static void	push_chunks_to_b(t_stack *stack, int chunk_size)
+{
+	int	start;
+	int	end;
+
+	start = 0;
+	while (start < stack->size_a)
+	{
+		end = start + chunk_size;
+		if (end > stack->size_a)
+			end = stack->size_a;
+		push_current_chunk(stack, start, end);
+		start = end;
+	}
+}
+
 static int	find_max_index_pos(t_stack *stack)
 {
-	int	i;
-	int	max_idx;
+	int	index;
+	int	max_index;
 	int	max_pos;
 
-	i = 0;
-	max_idx = -1;
+	index = 0;
+	max_index = -1;
 	max_pos = 0;
-	while (i < stack->size_b)
+	while (index < stack->size_b)
 	{
-		if (stack->b[i] > max_idx)
+		if (stack->b[index] > max_index)
 		{
-			max_idx = stack->b[i];
-			max_pos = i;
+			max_index = stack->b[index];
+			max_pos = index;
 		}
-		i++;
+		index++;
 	}
 	return (max_pos);
 }
@@ -81,7 +87,8 @@ static void	push_back_to_a(t_stack *stack)
 		{
 			steps = stack->size_b - max_pos;
 			while (steps-- > 0)
-				rrb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+				rrb(stack, stack->parsed->is_bench,
+					!stack->parsed->is_bench);
 		}
 		pa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
 	}
@@ -96,7 +103,9 @@ int	medium_strategy(t_stack *stack)
 	if (is_sorted(stack))
 		return (1);
 	index_stack(stack);
-	chunk_size = get_chunk_size(stack->size_a);
+	chunk_size = 1;
+	while (chunk_size * chunk_size < stack->size_a)
+		chunk_size++;
 	push_chunks_to_b(stack, chunk_size);
 	push_back_to_a(stack);
 	return (1);
