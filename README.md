@@ -1,10 +1,13 @@
 _This activity has been created as part of the 42 curriculum by mohmmah, sbanimou_
 
 # Push_swap
+
 ## Description
+
 **push_swap** sorts a stack of integers using a limited set of operations and prints the operation sequence that does it. Two stacks are involved: `a` (holds the input) and `b` (auxiliary). A strategy is picked from the input's disorder, or forced with a flag.
 
 ## Project flow
+
 ```
 argv
   |
@@ -59,6 +62,7 @@ free_parsed
 - **`src/utils/`** — shared helpers: `init_stack`/`free_stack`, `index_stack` (rank compression so chunk/radix work on dense indexes), `is_sorted`, `Disorder` (inversion ratio), `Bench` (stats dump), plus string utilities (`String`, `Split`, `Itoa`, `Double_toa`). Why: infrastructure used by parser, router and strategies.
 
 - **`src/printf/`** — minimal `ft_printf`. Why: 42 constraint; used for errors and bench output.
+
 ## Algorithm Selection
 
 ### Simple — Selection Sort
@@ -96,9 +100,7 @@ A → divide into chunks → push chunks to B
                     push back to A
 ```
 
-**Current complexity:** O(n²)
-
-> The current implementation does not yet guarantee the required O(n√n) complexity.
+**Current complexity:** O(n√n)
 
 ---
 
@@ -133,9 +135,9 @@ The strategy is selected according to the input disorder:
 ≥ 0.50        → Complex
 ```
 
-* **Simple:** Selection sort, O(n²)
-* **Medium:** Chunk sort, currently O(n²)
-* **Complex:** LSD Radix sort, O(n log n)
+- **Simple:** Selection sort, O(n²)
+- **Medium:** Chunk sort, currently O(n²)
+- **Complex:** LSD Radix sort, O(n log n)
 
 All strategies use O(n) stack space. The thresholds are used to match the sorting method to the input's level of disorder.
 
@@ -150,6 +152,7 @@ make
 Flags: `--simple`, `--medium`, `--complex`, `--adaptive` (default), `--bench` (print stats instead of the operation sequence). Flags come before the numbers; numbers may be space-separated in a single argument.
 
 ## Instructions
+
 ## Build
 
 ```bash
@@ -158,6 +161,7 @@ make clean    # remove objects
 make fclean   # remove objects + binary
 make re       # rebuild
 ```
+
 ## Testing
 
 The program was tested with:
@@ -170,7 +174,6 @@ The program was tested with:
 - Invalid arguments
 - Different strategy flags
 - Benchmark mode
-
 
 ## Resources
 

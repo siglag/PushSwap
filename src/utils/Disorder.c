@@ -16,8 +16,8 @@ int	calculate_disorder(t_parsed *parsed)
 {
 	size_t	index;
 	size_t	next_index;
-	int		mistakes;
-	int		total_pairs;
+	size_t	mistakes;
+	size_t	total_pairs;
 
 	index = 0;
 	mistakes = 0;

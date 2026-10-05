@@ -16,6 +16,7 @@
 # include <stdbool.h> //for bool
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "ft_printf.h"
 
 /*
@@ -89,7 +90,7 @@ size_t					ft_strlen(const char *str);
 char					**ft_split(char const *s, char c);
 t_parsed				*parser(int argc, char **argv);
 int						free_parsed(t_parsed *parsed);
-int						ft_isdigit(char *character);
+int						ft_fulldigit(char *character);
 int						ft_strncmp(char *s1, char *s2, size_t n);
 int						validate_format(int argc, char **argv);
 char					ft_tolower(char character);
@@ -120,7 +121,7 @@ char					*bench_strategy(t_parsed *parsed);
 void					free_stack(t_stack *stack);
 int						handle_flag(t_parsed *parsed, char *arg,
 							int *has_strategy);
-void					index_stack(t_stack *stack);
+int						index_stack(t_stack *stack);
 bool					is_sorted(t_stack *stack);
 char					*ft_dtoa(double number, int precision);
 char					*ft_itoa(int n);

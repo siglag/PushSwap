@@ -14,6 +14,8 @@
 
 int	free_parsed(t_parsed *parsed)
 {
+	if (!parsed)
+		return (0);
 	if (parsed->sequence)
 		free(parsed->sequence);
 	if (parsed)
@@ -45,7 +47,7 @@ int	extract_sequence(t_parsed *parsed, int argc, char **argv)
 	length = 0;
 	while (arg < argc)
 	{
-		if (ft_isdigit(argv[arg]))
+		if (ft_fulldigit(argv[arg]))
 			length += count_numbers(argv[arg]);
 		arg++;
 	}

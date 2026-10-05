@@ -21,19 +21,20 @@ int	ft_atoi(char *str, int *result)
 	sign = 1;
 	if (*str == '-' || *str == '+')
 	{
-		if (*str == '-')
+		if (*str++ == '-')
 			sign = -1;
-		str++;
 	}
+	if (!*str)
+		return (0);
 	while (*str >= '0' && *str <= '9')
 	{
-		number = number * 10 + (*str - '0');
-		if (sign == 1 && number > 2147483647)
+		number = number * 10 + (*str++ - '0');
+		if ((sign == 1 && number > INT_MAX)
+			|| (sign == -1 && number > 2147483648L))
 			return (0);
-		if (sign == -1 && number > 2147483648)
-			return (0);
-		str++;
 	}
+	if (*str)
+		return (0);
 	*result = (int)(number * sign);
 	return (1);
 }

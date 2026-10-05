@@ -22,13 +22,13 @@ static void	sort_bit(t_stack *stack, size_t bit)
 	while (index < size)
 	{
 		if (((stack->a[0] >> bit) & 1) == 0)
-			pb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			pb(stack, stack->parsed->is_bench, true);
 		else
-			ra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			ra(stack, stack->parsed->is_bench, true);
 		index++;
 	}
 	while (stack->size_b > 0)
-		pa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		pa(stack, stack->parsed->is_bench, true);
 }
 
 int	complex_strategy(t_stack *stack)
@@ -36,9 +36,8 @@ int	complex_strategy(t_stack *stack)
 	size_t	bit;
 	size_t	max_bits;
 
-	if (!stack || stack->size_a < 2)
-		return (1);
-	index_stack(stack);
+	if (!stack || stack->size_a < 2 || !index_stack(stack))
+		return (0);
 	max_bits = 0;
 	while ((stack->size_a - 1) >> max_bits)
 		max_bits++;

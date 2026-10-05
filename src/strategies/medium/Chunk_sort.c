@@ -22,13 +22,13 @@ static void	push_current_chunk(t_stack *stack, int start, int end)
 	{
 		if (stack->a[0] >= start && stack->a[0] < end)
 		{
-			pb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			pb(stack, stack->parsed->is_bench, true);
 			if (stack->b[0] < start + half)
-				rb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+				rb(stack, stack->parsed->is_bench, true);
 			moved++;
 		}
 		else
-			ra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			ra(stack, stack->parsed->is_bench, true);
 	}
 }
 
@@ -81,16 +81,16 @@ static void	push_back_to_a(t_stack *stack)
 		{
 			steps = max_pos;
 			while (steps-- > 0)
-				rb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+				rb(stack, stack->parsed->is_bench, true);
 		}
 		else
 		{
 			steps = stack->size_b - max_pos;
 			while (steps-- > 0)
 				rrb(stack, stack->parsed->is_bench,
-					!stack->parsed->is_bench);
+					true);
 		}
-		pa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		pa(stack, stack->parsed->is_bench, true);
 	}
 }
 

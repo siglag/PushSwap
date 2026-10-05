@@ -40,21 +40,21 @@ static void	sort_three(t_stack *stack)
 	b = stack->a[1];
 	c = stack->a[2];
 	if (a > b && b < c && a < c)
-		sa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		sa(stack, stack->parsed->is_bench, true);
 	else if (a > b && b > c)
 	{
-		sa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
-		rra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		sa(stack, stack->parsed->is_bench, true);
+		rra(stack, stack->parsed->is_bench, true);
 	}
 	else if (a > b && b < c && a > c)
-		ra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		ra(stack, stack->parsed->is_bench, true);
 	else if (a < b && b > c && a < c)
 	{
-		sa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
-		ra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		sa(stack, stack->parsed->is_bench, true);
+		ra(stack, stack->parsed->is_bench, true);
 	}
 	else if (a < b && b > c && a > c)
-		rra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		rra(stack, stack->parsed->is_bench, true);
 }
 
 static void	push_min_to_b(t_stack *stack)
@@ -66,15 +66,15 @@ static void	push_min_to_b(t_stack *stack)
 	if (min_idx <= stack->size_a / 2)
 	{
 		while (min_idx-- > 0)
-			ra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			ra(stack, stack->parsed->is_bench, true);
 	}
 	else
 	{
 		steps = stack->size_a - min_idx;
 		while (steps-- > 0)
-			rra(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			rra(stack, stack->parsed->is_bench, true);
 	}
-	pb(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+	pb(stack, stack->parsed->is_bench, true);
 }
 
 int	simple_strategy(t_stack *stack)
@@ -86,7 +86,7 @@ int	simple_strategy(t_stack *stack)
 	if (stack->size_a == 2)
 	{
 		if (stack->a[0] > stack->a[1])
-			sa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+			sa(stack, stack->parsed->is_bench, true);
 		return (1);
 	}
 	while (stack->size_a > 3)
@@ -94,6 +94,6 @@ int	simple_strategy(t_stack *stack)
 	if (!is_sorted(stack))
 		sort_three(stack);
 	while (stack->size_b > 0)
-		pa(stack, stack->parsed->is_bench, !stack->parsed->is_bench);
+		pa(stack, stack->parsed->is_bench, true);
 	return (1);
 }

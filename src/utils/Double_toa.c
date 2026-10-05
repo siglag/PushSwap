@@ -38,6 +38,7 @@ char	*ft_dtoa(double number, int precision)
 	char	*integer;
 	char	*fraction;
 	char	*result;
+	char	*separator;
 
 	integer = ft_itoa((long long)number);
 	if (!integer)
@@ -45,8 +46,14 @@ char	*ft_dtoa(double number, int precision)
 	fraction = ft_double_fraction(number, precision);
 	if (!fraction)
 		return (free(integer), NULL);
-	result = ft_strjoin(ft_strjoin(integer, "."), fraction);
+	separator = ft_strjoin(integer, ".");
+	if (!separator)
+		return (free(integer), free(fraction), NULL);
+	result = ft_strjoin(separator, fraction);
+	if (!result)
+		return (free(integer), free(fraction), free(separator), NULL);
 	free(integer);
 	free(fraction);
+	free(separator);
 	return (result);
 }

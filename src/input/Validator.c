@@ -70,7 +70,7 @@ int	validate_format(int argc, char **argv)
 		}
 		else
 		{
-			if (!ft_isdigit(argv[arg]))
+			if (!ft_fulldigit(argv[arg]))
 				return (0);
 			has_sequence = 1;
 		}

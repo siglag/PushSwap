@@ -36,7 +36,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
-int	ft_isdigit(char *character)
+int	ft_fulldigit(char *character)
 {
 	size_t	index;
 
