@@ -12,15 +12,15 @@
 
 #include "ft_printf.h"
 
-int	ft_handle_conversion(char conversion, va_list args)
+int	ft_handle_conversion(int fd, char conversion, va_list args)
 {
 	if (conversion == 'c')
-		return (ft_print_char(va_arg(args, int)));
+		return (ft_print_char(fd, va_arg(args, int)));
 	if (conversion == 's')
-		return (ft_print_string(va_arg(args, char *)));
+		return (ft_print_string(fd, va_arg(args, char *)));
 	if (conversion == 'd' || conversion == 'i')
-		return (ft_print_number(va_arg(args, int)));
+		return (ft_print_number(fd, va_arg(args, int)));
 	if (conversion == '%')
-		return (write(1, "%", 1));
+		return (write(fd, "%", 1));
 	return (0);
 }

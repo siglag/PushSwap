@@ -43,36 +43,36 @@ int	count_operations(t_parsed *parsed)
 char	*strategy_name(t_parsed *parsed)
 {
 	if (parsed->adaptive == true)
-		return ("ADAPTIVE");
+		return ("Adaptive");
 	else if (parsed->strategy == SIMPLE)
-		return ("SIMPLE");
+		return ("Simple");
 	else if (parsed->strategy == MEDIUM)
-		return ("MEDIUM");
+		return ("Medium");
 	else if (parsed->strategy == COMPLEX)
-		return ("COMPLEX");
+		return ("Complex");
 	else
-		return ("UNKNOWN");
+		return ("Unknown");
 }
 
 int	bench(t_parsed *parsed)
 {
 	if (!parsed->is_bench)
 		return (0);
-	ft_printf("[bench] disorder: %s%%\n", ft_dtoa(parsed->disorder * 100, 2));
-	ft_printf("[bench] strategy: %s / %s\n",
+	ft_printf(2, "[bench] disorder: %s%%\n", ft_dtoa(parsed->disorder * 100, 2));
+	ft_printf(2, "[bench] strategy: %s / %s\n",
 		strategy_name(parsed),
 		bench_strategy(parsed));
-	ft_printf("[bench] total_ops: %d\n", count_operations(parsed));
-	ft_printf("[bench] sa: %d  sb: %d  ss: %d  ",
+	ft_printf(2, "[bench] total_ops: %d\n", count_operations(parsed));
+	ft_printf(2, "[bench] sa: %d  sb: %d  ss: %d  ",
 		parsed->operations.sa,
 		parsed->operations.sb,
 		parsed->operations.ss);
-	ft_printf("pa: %d  pb: %d\n", parsed->operations.pa, parsed->operations.pb);
-	ft_printf("[bench] ra: %d  rb: %d  rr: %d  ",
+	ft_printf(2, "pa: %d  pb: %d\n", parsed->operations.pa, parsed->operations.pb);
+	ft_printf(2, "[bench] ra: %d  rb: %d  rr: %d  ",
 		parsed->operations.ra,
 		parsed->operations.rb,
 		parsed->operations.rr);
-	ft_printf("rra: %d  rrb: %d  rrr: %d\n",
+	ft_printf(2, "rra: %d  rrb: %d  rrr: %d\n",
 		parsed->operations.rra,
 		parsed->operations.rrb,
 		parsed->operations.rrr);

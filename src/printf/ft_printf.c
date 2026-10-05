@@ -13,7 +13,7 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-int	ft_printf(const char *input, ...)
+int	ft_printf(int fd, const char *input, ...)
 {
 	va_list	args;
 	int		count;
@@ -27,10 +27,10 @@ int	ft_printf(const char *input, ...)
 		if (input[index] == '%')
 		{
 			index++;
-			count += ft_handle_conversion(input[index], args);
+			count += ft_handle_conversion(fd, input[index], args);
 		}
 		else
-			count += write(1, &input[index], 1);
+			count += write(fd, &input[index], 1);
 		index++;
 	}
 	va_end(args);

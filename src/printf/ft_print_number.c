@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-static void	ft_write(char c)
+static void	ft_write(int fd, char c)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
-int	ft_print_number(int number)
+int	ft_print_number(int fd, int number)
 {
 	int		count;
 	long	long_num;
@@ -26,12 +26,12 @@ int	ft_print_number(int number)
 	count = 0;
 	if (long_num < 0)
 	{
-		ft_write('-');
+		ft_write(fd, '-');
 		long_num = -long_num;
 		count++;
 	}
 	if (long_num >= 10)
-		count += ft_print_number(long_num / 10);
-	ft_write(long_num % 10 + '0');
+		count += ft_print_number(fd, long_num / 10);
+	ft_write(fd, long_num % 10 + '0');
 	return (count + 1);
 }

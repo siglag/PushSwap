@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_print_string(char *string)
+int	ft_print_string(int fd, char *string)
 {
 	int	count;
 
@@ -21,6 +21,6 @@ int	ft_print_string(char *string)
 	count = 0;
 	while (string[count])
 		count++;
-	write(1, string, count);
+	write(fd, string, count);
 	return (count);
 }

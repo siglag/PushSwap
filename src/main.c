@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 	parsed = parser(argc, argv);
 	if (!parsed)
 	{
-		ft_printf("Error\n");
+		ft_printf(2, "Error\n");
 		exit(1);
 	}
 	if (!calculate_disorder(parsed) || !strategies_router(parsed))
 	{
-		ft_printf("Error\n");
+		ft_printf(2, "Error\n");
 		free_parsed(parsed);
 		exit(1);
 	}

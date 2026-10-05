@@ -16,11 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		ft_printf(const char *input, ...);
-int		ft_handle_conversion(char conversion, va_list args);
-int		ft_print_char(int character);
-int		ft_print_string(char *string);
-int		ft_print_number(int number);
-int		ft_print_number(int number);
+int		ft_printf( int fd, const char *input, ...);
+int		ft_handle_conversion(int fd, char conversion, va_list args);
+int		ft_print_char(int fd, int character);
+int		ft_print_string(int fd, char *string);
+int		ft_print_number(int fd, int number);
+int		ft_print_number(int fd, int number);
 
 #endif
