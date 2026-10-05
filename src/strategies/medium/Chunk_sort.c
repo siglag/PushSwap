@@ -36,13 +36,15 @@ static void	push_chunks_to_b(t_stack *stack, int chunk_size)
 {
 	int	start;
 	int	end;
+	int total_size;
 
 	start = 0;
-	while (start < stack->size_a)
+	total_size = stack->size_a;
+	while (start < total_size)
 	{
 		end = start + chunk_size;
-		if (end > stack->size_a)
-			end = stack->size_a;
+		if (end > total_size)
+			end = total_size;
 		push_current_chunk(stack, start, end);
 		start = end;
 	}
