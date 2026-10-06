@@ -56,10 +56,14 @@ char	*strategy_name(t_parsed *parsed)
 
 int	bench(t_parsed *parsed)
 {
-	if (!parsed->is_bench)
+	char	*disorder;
+
+	disorder = ft_dtoa(parsed->disorder * 100, 2);
+	if (!disorder || !parsed->is_bench)
 		return (0);
 	ft_printf(2, "[bench] disorder: %s%%\n",
 		ft_dtoa(parsed->disorder * 100, 2));
+	free(disorder);
 	ft_printf(2, "[bench] strategy: %s / %s\n",
 		strategy_name(parsed),
 		bench_strategy(parsed));
@@ -71,12 +75,8 @@ int	bench(t_parsed *parsed)
 	ft_printf(2, "pa: %d  pb: %d\n", parsed->operations.pa,
 		parsed->operations.pb);
 	ft_printf(2, "[bench] ra: %d  rb: %d  rr: %d  ",
-		parsed->operations.ra,
-		parsed->operations.rb,
-		parsed->operations.rr);
+		parsed->operations.ra, parsed->operations.rb, parsed->operations.rr);
 	ft_printf(2, "rra: %d  rrb: %d  rrr: %d\n",
-		parsed->operations.rra,
-		parsed->operations.rrb,
-		parsed->operations.rrr);
+		parsed->operations.rra, parsed->operations.rrb, parsed->operations.rrr);
 	return (1);
 }

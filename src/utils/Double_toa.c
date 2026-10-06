@@ -52,8 +52,6 @@ char	*ft_dtoa(double number, int precision)
 	result = ft_strjoin(separator, fraction);
 	if (!result)
 		return (free(integer), free(fraction), free(separator), NULL);
-	free(integer);
-	free(fraction);
-	free(separator);
+	(free(integer), free(fraction), free(separator));
 	return (result);
 }
