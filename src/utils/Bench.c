@@ -58,8 +58,10 @@ int	bench(t_parsed *parsed)
 {
 	char	*disorder;
 
+	if (!parsed ||!parsed->is_bench)
+		return (0);
 	disorder = ft_dtoa(parsed->disorder * 100, 2);
-	if (!disorder || !parsed->is_bench)
+	if (!disorder)
 		return (0);
 	ft_printf(2, "[bench] disorder: %s%%\n", disorder);
 	free(disorder);
@@ -68,9 +70,7 @@ int	bench(t_parsed *parsed)
 		bench_strategy(parsed));
 	ft_printf(2, "[bench] total_ops: %d\n", count_operations(parsed));
 	ft_printf(2, "[bench] sa: %d  sb: %d  ss: %d  ",
-		parsed->operations.sa,
-		parsed->operations.sb,
-		parsed->operations.ss);
+		parsed->operations.sa, parsed->operations.sb, parsed->operations.ss);
 	ft_printf(2, "pa: %d  pb: %d\n", parsed->operations.pa,
 		parsed->operations.pb);
 	ft_printf(2, "[bench] ra: %d  rb: %d  rr: %d  ",
