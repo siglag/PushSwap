@@ -185,6 +185,26 @@ The program was tested with:
 
 AI tools were used as a supporting resource during the project for research, troubleshooting, and documentation.
 
+## Team Contributions
+
+### Mohammah
+
+- Arguments parser and input validation
+- Strategies router
+- Complex sorting strategy
+- Benchmark handler
+- Project typedefs and data structures
+- Makefile and build configuration
+
+### sbanimou
+
+- Simple sorting strategy
+- Medium sorting strategy
+- Most of the helper/utility functions
+- README documentation
+- Test suite
+- All stack operations
+
 ## Authors
 
 - `mohammah`
