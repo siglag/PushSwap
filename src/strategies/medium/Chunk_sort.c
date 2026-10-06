@@ -36,7 +36,7 @@ static void	push_chunks_to_b(t_stack *stack, int chunk_size)
 {
 	int	start;
 	int	end;
-	int total_size;
+	int	total_size;
 
 	start = 0;
 	total_size = stack->size_a;

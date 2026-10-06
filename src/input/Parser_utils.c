@@ -62,10 +62,10 @@ int	extract_numbers(int *sequence, int argc, char **argv)
 			token = extract_token(sequence, numbers, &index);
 			if (token < 0)
 			{
-				free_words(numbers, 0);
+				free_words(numbers);
 				return (0);
 			}
-			free_words(numbers, token);
+			free_words(numbers);
 		}
 		arg++;
 	}

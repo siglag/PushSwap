@@ -107,7 +107,7 @@ int						extract_numbers(int *sequence, int argc, char **argv);
 char					**ft_split(char const *str, char c);
 char					*ft_substr(char const *s, unsigned int start,
 							size_t len);
-void					free_words(char **result, int count);
+void					free_words(char **result);
 int						extract_token(int *sequence, char **numbers,
 							int *index);
 int						complex_strategy(t_stack *stack);

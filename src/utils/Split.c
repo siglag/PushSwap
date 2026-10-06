@@ -45,14 +45,19 @@ static int	get_word_length(const char *str, int start, char c)
 	return (length);
 }
 
-void	free_words(char **result, int count)
+void	free_words(char **words)
 {
-	while (count > 0)
+	int	index;
+
+	if (!words)
+		return ;
+	index = 0;
+	while (words[index])
 	{
-		count--;
-		free(result[count]);
+		free(words[index]);
+		index++;
 	}
-	free(result);
+	free(words);
 }
 
 static int	fill_result(char **result, const char *str, char c)
@@ -72,7 +77,11 @@ static int	fill_result(char **result, const char *str, char c)
 		length = get_word_length(str, index, c);
 		result[word] = ft_substr(str, index, length);
 		if (!result[word])
-			return (0);
+		{
+			while (word > 0)
+				free(result[--word]);
+			return (free(result), 0);
+		}
 		word++;
 		index += length;
 	}
@@ -93,7 +102,7 @@ char	**ft_split(char const *str, char c)
 		return (NULL);
 	if (!fill_result(result, str, c))
 	{
-		free_words(result, words);
+		free_words(result);
 		return (NULL);
 	}
 	return (result);
