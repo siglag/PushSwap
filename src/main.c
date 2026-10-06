@@ -6,7 +6,7 @@
 /*   By: mohammah <mohammah@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:08:23 by mohammah          #+#    #+#             */
-/*   Updated: 2026/10/04 14:04:32 by mohammah         ###   ########.fr       */
+/*   Updated: 2026/10/07 02:53:54 by mohammah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_parsed	*parsed;
 
+	if (argc < 2)
+		exit(0);
 	parsed = parser(argc, argv);
 	if (!parsed)
 	{
@@ -30,5 +32,5 @@ int	main(int argc, char **argv)
 	}
 	bench(parsed);
 	free_parsed(parsed);
-	return (0);
+	exit(0);
 }
