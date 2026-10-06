@@ -61,8 +61,7 @@ int	bench(t_parsed *parsed)
 	disorder = ft_dtoa(parsed->disorder * 100, 2);
 	if (!disorder || !parsed->is_bench)
 		return (0);
-	ft_printf(2, "[bench] disorder: %s%%\n",
-		ft_dtoa(parsed->disorder * 100, 2));
+	ft_printf(2, "[bench] disorder: %s%%\n", disorder);
 	free(disorder);
 	ft_printf(2, "[bench] strategy: %s / %s\n",
 		strategy_name(parsed),

@@ -101,9 +101,6 @@ char	**ft_split(char const *str, char c)
 	if (!result)
 		return (NULL);
 	if (!fill_result(result, str, c))
-	{
-		free_words(result);
 		return (NULL);
-	}
 	return (result);
 }
