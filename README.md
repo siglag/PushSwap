@@ -136,7 +136,7 @@ The strategy is selected according to the input disorder:
 ```
 
 - **Simple:** Selection sort, O(n²)
-- **Medium:** Chunk sort, currently O(n²)
+- **Medium:** Chunk sort, O(n√n)
 - **Complex:** LSD Radix sort, O(n log n)
 
 All strategies use O(n) stack space. The thresholds are used to match the sorting method to the input's level of disorder.
